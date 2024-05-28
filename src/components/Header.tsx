@@ -12,7 +12,7 @@ const Header = () => {
     setIsNavLinksClicked(true);
   }
   return (
-    <header>
+    <header className=" bg-shade-5 py-2">
       <section className="sm:hidden bg-white flex justify-between items-center px-4 py-3">
         <div className="flex items-center gap-4">
           <button>
