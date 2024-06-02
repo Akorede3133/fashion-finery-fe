@@ -3,7 +3,7 @@ import { womenCollection } from '../utils/shopCollection'
 const ShopCollection = () => {
   return (
     <div>
-       <h2 className='text-center text-2xl py-3 font-plus-jakarta font-medium'>Shop by Collection</h2>
+       <h2 className='text-center text-2xl sm:pt-14 sm:pb-10 py-3 font-plus-jakarta font-medium'>Shop by Collection</h2>
       <ul className=' grid grid-cols-2 sm:grid-cols-3 gap-4'>
         {
           womenCollection.map((col, index) => (
