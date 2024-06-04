@@ -1,5 +1,6 @@
 import CoatCollection from "./CoatCollection"
 import CssCollection from "./CssCollection"
+import CupcCollection from "./CupcCollection"
 import ShopCollection from "./ShopCollection"
 
 const Collection = () => {
@@ -8,6 +9,7 @@ const Collection = () => {
       <ShopCollection />
       <CoatCollection />
       <CssCollection />
+      <CupcCollection />
     </section>
   )
 }
