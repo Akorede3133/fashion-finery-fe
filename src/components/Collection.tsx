@@ -5,12 +5,14 @@ import ShopCollection from "./ShopCollection"
 
 const Collection = () => {
   return (
-    <section className='w-[90%] mx-auto overflow-hidden h-full'>
+    <div className='w-[90%] mx-auto overflow-hidden h-full'>
       <ShopCollection />
-      <CoatCollection />
-      <CssCollection />
-      <CupcCollection />
-    </section>
+      <section className=" sm:space-y-[2.5rem] sm:pt-[7.75rem]">
+        <CoatCollection />
+        <CssCollection />
+        <CupcCollection />
+      </section>
+    </div>
   )
 }
 

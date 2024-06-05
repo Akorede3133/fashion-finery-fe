@@ -3,3 +3,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.collection:nth-child(even) div div{
+  order: 1;
+}
+.collection:nth-child(even) div img{
+  background-color: red;
+  order: 2;
+}
