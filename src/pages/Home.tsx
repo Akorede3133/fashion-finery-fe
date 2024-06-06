@@ -1,4 +1,4 @@
-import Collection from "../components/Collection"
+import Collection from "../components/Collections"
 import Hero from "../components/Hero"
 
 const Home = () => {
