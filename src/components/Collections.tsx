@@ -1,4 +1,3 @@
-import BestSeller from "./BestSeller"
 import CoatCollection from "./CoatCollection"
 import CssCollection from "./CssCollection"
 import CupcCollection from "./CupcCollection"
@@ -13,7 +12,6 @@ const Collections = () => {
         <CssCollection />
         <CupcCollection />
       </section>
-      <BestSeller />
     </div>
   )
 }
