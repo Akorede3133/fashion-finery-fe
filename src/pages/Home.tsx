@@ -2,6 +2,7 @@ import BestSeller from "../components/BestSeller"
 import Collection from "../components/Collections"
 import Hero from "../components/Hero"
 import Product from "../components/Product"
+import Sale from "../components/Sale"
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Collection />
       <BestSeller />
       <Product />
+      <Sale />
     </>
   )
 }
