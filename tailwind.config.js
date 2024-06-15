@@ -61,18 +61,18 @@ export default {
         srate: {
           error: {
             1: '#B81F40',
-            2: '#B81F40',
-            3: '#B81F40'
+            2: '#fe7895',
+            3: '#fec9d4'
           },
           success: {
             1: '#8DB81F',
-            2: '#8DB81F',
-            3: '#8DB81F'
+            2: '#7fff6a',
+            3: '#cfffc8'
           },
           info: {
             1: '#004AB9',
             2: '#4A1FB8',
-            3: '#4A1FB8'
+            3: '#c3d8f8'
           },
           warning: {
             1: '#FFC000',
