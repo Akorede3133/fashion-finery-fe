@@ -1,3 +1,4 @@
+import AlsoLike from "../components/AlsoLike"
 import BestSeller from "../components/BestSeller"
 import Collection from "../components/Collections"
 import Hero from "../components/Hero"
@@ -16,6 +17,7 @@ const Home = () => {
       <Sale />
       <ShopLatest />
       <NewArrival />
+      <AlsoLike />
     </>
   )
 }
