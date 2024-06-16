@@ -1,6 +1,7 @@
 import BestSeller from "../components/BestSeller"
 import Collection from "../components/Collections"
 import Hero from "../components/Hero"
+import NewArrival from "../components/NewArrivals"
 import Product from "../components/Product"
 import Sale from "../components/Sale"
 import ShopLatest from "../components/ShopLatest"
@@ -14,6 +15,7 @@ const Home = () => {
       <Product />
       <Sale />
       <ShopLatest />
+      <NewArrival />
     </>
   )
 }
