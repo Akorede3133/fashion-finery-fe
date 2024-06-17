@@ -25,7 +25,7 @@ const AlsoLike = () => {
             </li>
           </ul>
         </div>
-        <p className=' text-xl hidden sm:block text-center pt-20'>Business Management Consulting Boutique for Lifestyle Brands</p>
+        <p className='text-xl hidden sm:block text-center pt-20'>Business Management Consulting Boutique for Lifestyle Brands</p>
       </div>
     </div>
   )
