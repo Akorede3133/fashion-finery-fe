@@ -12,7 +12,7 @@ const links = [
 ]
 const DesktopMenu = () => {
   return (
-    <div className="absolute top-[85px] z-[9999] bg-[rgba(0,0,0,0.5)] left-0 w-full h-full">
+    <div className="hidden sm:block absolute top-[85px] z-[9999] bg-[rgba(0,0,0,0.5)] left-0 w-full h-full">
       <div className="absolute top-0 z-[1000] bg-white left-[5%] rounded-sm">
         <div className="flex gap-10 px-5 py-5">
           <ul className=" divide-y">
