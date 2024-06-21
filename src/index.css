@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  overflow: hidden;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
 .collection:nth-child(even) div div{
   order: 1;
 }
