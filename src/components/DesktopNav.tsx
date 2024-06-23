@@ -4,6 +4,7 @@ import links from "../utils/navLinks";
 import HeaderNavLink from './HeaderNavLink';
 import { HiOutlineLockClosed, HiOutlineMagnifyingGlass, HiOutlineUser } from 'react-icons/hi2';
 import { MdOutlineCardGiftcard } from 'react-icons/md';
+import DesktopMenu from './DesktopMenu';
 
 const DesktopNav = () => {
   const [activeLink, setActiveLink] = useState(0)
@@ -41,6 +42,8 @@ const DesktopNav = () => {
           <HiOutlineLockClosed className="text-xl" />
         </button>
       </div>
+      <DesktopMenu />
+
   </section>
   )
 }

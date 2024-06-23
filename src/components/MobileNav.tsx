@@ -1,5 +1,6 @@
 import { HiBars3, HiOutlineLockClosed, HiOutlineMagnifyingGlass } from "react-icons/hi2"
 import logo from '../assets/logo.png';
+import MobileMenu from "./MobileMenu";
 
 const MobileNav = () => {
   return (
@@ -21,6 +22,7 @@ const MobileNav = () => {
           <HiOutlineLockClosed className="text-2xl" />
         </button>
       </div>
+      {/* <MobileMenu /> */}
     </section>
   )
 }
