@@ -13,11 +13,11 @@ const newArrivalLinks = [
   'all'
 ]
 
-const MobileMenu = () => {
+const MobileMenu = ({ showMenu, closeMenu }: { showMenu: boolean, closeMenu: () => void }) => {
   return (
-    <section className="fixed sm:hidden bg-shade-4 top-0 min-h-screen h-full w-full left-0 z-[1000] overflow-y-auto">
+    <section className={`fixed sm:hidden bg-shade-4 top-0 min-h-screen h-full w-full left-0 z-[1000] overflow-y-auto ${showMenu ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all duration-[0.75s]`}>
       <div className=" flex justify-end bg-tint-5 mt-[10px] mb-[3px] p-3">
-        <button>
+        <button onClick={closeMenu}>
           <HiOutlineXMark className=" text-xl" />
         </button>
       </div>
