@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { HiOutlinePlus } from "react-icons/hi2"
+import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi2"
 
 const MenuShoppingOption = ( { header, links }) => {
   const [openLinks, setOpenLinks] = useState(false);
@@ -8,7 +8,8 @@ const MenuShoppingOption = ( { header, links }) => {
       <div className={`flex justify-between items-center  py-3 ${openLinks ? 'bg-tint-5' : 'bg-whit'} cursor-pointer`} onClick={() => setOpenLinks((prev)=> !prev)}>
         <h4 className=" uppercase font-plus-jakarta text-sm font-semibold">{header}</h4>
         <button>
-          <HiOutlinePlus className="text-2xl text-primary-black" />
+          { openLinks ? <HiOutlineMinus className="text-2xl text-primary-black" /> :   <HiOutlinePlus className="text-2xl text-primary-black" /> }
+         
         </button>
       </div>
       { openLinks &&  <div className="h-[1px] bg-neutral-gray-5"></div>}
