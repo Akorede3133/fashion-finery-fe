@@ -1,5 +1,4 @@
 import womenMenuPicture from '../assets/women/women_menu_picture.png';
-import menMenuPicture from '../assets/men/men_menu_picture.png';
 
 
 const links = [
@@ -10,10 +9,13 @@ const links = [
   'new arrivals',
   'all'
 ]
-const DesktopMenu = () => {
+const DesktopMenu = ({ coordY } : { coordY: number }) => {  
+  const left = `${coordY}px`;
   return (
     <div className="hidden sm:block absolute top-[85px] z-[9999] bg-[rgba(0,0,0,0.5)] left-0 w-full h-full">
-      <div className="absolute top-0 z-[1000] bg-white left-[5%] rounded-sm">
+      <div className={`absolute top-0 z-[1000] bg-white rounded-sm`} style={{
+        left: left
+      }}>
         <div className="flex gap-10 px-5 py-5">
           <ul className=" divide-y">
             {
