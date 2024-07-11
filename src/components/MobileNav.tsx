@@ -6,9 +6,10 @@ import Search from "./Search";
 
 const MobileNav = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [showSearch, setShowSearch]  = useState(false);
   useEffect(() => {
     let time;
-    if (showMenu) {
+    if (showMenu || showSearch) {
       time =  setTimeout(() => {
         document.body.style.overflow = 'hidden'
       }, 1000)
@@ -17,8 +18,10 @@ const MobileNav = () => {
       clearTimeout(time)
     }
 
-  }, [showMenu])
+  }, [showMenu, showSearch])
   const closeMenu = () => setShowMenu(false);
+  const closeSearch = () => setShowSearch(false);
+
   return (
     <section className="sm:hidden bg-white flex justify-between items-center px-4 py-3">
       <div className="flex items-center gap-4">
@@ -31,7 +34,7 @@ const MobileNav = () => {
         </div>
       </div>
       <div className="flex items-center gap-4">
-        <button>
+        <button onClick={() => setShowSearch(true)}>
           <HiOutlineMagnifyingGlass className="text-2xl" />
         </button>
         <button>
@@ -39,7 +42,7 @@ const MobileNav = () => {
         </button>
       </div>
       <MobileMenu showMenu={showMenu} closeMenu={closeMenu} />
-      <Search />
+      <Search showSearch={showSearch} closeSearch={closeSearch} />
     </section>
   )
 }
