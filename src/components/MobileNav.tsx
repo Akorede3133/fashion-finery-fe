@@ -2,6 +2,7 @@ import { HiBars3, HiOutlineLockClosed, HiOutlineMagnifyingGlass } from "react-ic
 import logo from '../assets/logo.png';
 import MobileMenu from "./MobileMenu";
 import { useEffect, useState } from "react";
+import Search from "./Search";
 
 const MobileNav = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -38,6 +39,7 @@ const MobileNav = () => {
         </button>
       </div>
       <MobileMenu showMenu={showMenu} closeMenu={closeMenu} />
+      <Search />
     </section>
   )
 }
