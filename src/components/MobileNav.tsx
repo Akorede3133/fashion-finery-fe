@@ -8,14 +8,10 @@ const MobileNav = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch]  = useState(false);
   useEffect(() => {
-    let time;
     if (showMenu || showSearch) {
-      time =  setTimeout(() => {
-        document.body.style.overflow = 'hidden'
-      }, 1000)
+      document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'visible'
-      clearTimeout(time)
     }
 
   }, [showMenu, showSearch])
