@@ -21,7 +21,7 @@ const Search = ({ closeSearch, showSearch, position, closeActiveNavButton }: { c
     closeActiveNavButton();
   }
   return (
-    <div  className={`w-full fixed h-screen left-0 top-0 bg-[rgba(0,0,0,0.3)] z-[1000] ${showSearch ? 'block': 'hidden'}`}>
+    <div  className={`w-full fixed h-screen left-0 top-0 sm:top-[70px] bg-[rgba(0,0,0,0.3)] z-[1000] ${showSearch ? 'block': 'hidden'}`}>
       <div className={` fixed sm:hiddn bg-shade-4 sm:bg-white top-0 sm:top-[70px] min-h-screen h-full sm:h-[80vh] sm:min-h-[90vh] w-full sm:w-[496px] left-0  overflow-y-aut ${showSearch ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all sm:transition-none duration-[0.75s] flex flex-col `} style={
       {
         left: `${position as number - 435}px`
