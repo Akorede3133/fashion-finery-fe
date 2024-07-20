@@ -3,6 +3,7 @@ import logo from '../assets/logo.png';
 import MobileMenu from "./MobileMenu";
 import { useEffect, useState } from "react";
 import Search from "./Search";
+import Login from "./Login";
 
 const MobileNav = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -39,6 +40,7 @@ const MobileNav = () => {
       </div>
       <MobileMenu showMenu={showMenu} closeMenu={closeMenu} />
       <Search showSearch={showSearch} closeSearch={closeSearch} />
+      {/* <Login /> */}
     </section>
   )
 }
