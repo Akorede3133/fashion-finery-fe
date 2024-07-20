@@ -4,10 +4,25 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
 .collection:nth-child(even) div div{
   order: 1;
 }
 .collection:nth-child(even) div img{
   background-color: red;
   order: 2;
+}
+
+.nav--active {
+  width: 50px;
+  height: 6px;
+  position: absolute;
+  left: 50%;
+  top: 150%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: #4a1fb8;
 }
