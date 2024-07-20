@@ -7,6 +7,8 @@ import womenMenuPicture from '../assets/women/women_menu_picture.png';
 import menMenuPicture from '../assets/men/men_menu_picture.png';
 import { useState } from "react"
 import MenuHead from "./MenuHead"
+import { useAppDispatch } from "../redux/hooks"
+import { displayAuthPage } from "../redux/feature/auth/authSlice"
 const newArrivalLinks = [
   'coats & jacket',
   'Trench coat',
@@ -16,6 +18,12 @@ const newArrivalLinks = [
 ]
 
 const MobileMenu = ({ showMenu, closeMenu }: { showMenu: boolean, closeMenu: () => void }) => {
+  const dispatch = useAppDispatch();
+  const handleShowAuthPage = () => {
+    dispatch(displayAuthPage());
+    console.log('Auth');
+    
+  }
   return (
     <section className={`fixed sm:hidden bg-shade-4 top-0 min-h-screen h-full w-full left-0 z-[1000] overflow-y-auto ${showMenu ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all duration-[0.75s]`}>
       <MenuHead closeMenu={closeMenu} text="" />
@@ -35,7 +43,7 @@ const MobileMenu = ({ showMenu, closeMenu }: { showMenu: boolean, closeMenu: () 
           <MenuShoppingOptionsWithIcons icon={<MdOutlineCardGiftcard className=" text-2xl" />} name='gift card' />
           <MenuShoppingOptionsWithIcons icon={<HiOutlineHeart className=" text-2xl" />} name='wishlist' />
           <MenuShoppingOptionsWithIcons icon={<HiOutlineMagnifyingGlass className=" text-2xl" />} name='search' />
-          <MenuShoppingOptionsWithIcons icon={<HiOutlineUser className=" text-2xl" />} name='login / register' />
+          <MenuShoppingOptionsWithIcons icon={<HiOutlineUser className=" text-2xl" />} name='login / register' action={handleShowAuthPage} />
         </ul>
         <div className="px-5">
           <p>Need help?</p>

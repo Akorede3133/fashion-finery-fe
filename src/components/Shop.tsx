@@ -7,7 +7,7 @@ const Shop = ({ shopDescription, items }) => {
       <ul className=' grid grid-cols-2 sm:grid-cols-4 gap-3'>
         {
           items.map((latest, index) => (
-            <ShopLatestCard latest={latest} index={index} />
+            <ShopLatestCard key={index} latest={latest} index={index} />
           ))
         }
       </ul>

@@ -15,8 +15,8 @@ const MenuShoppingOption = ( { header, links }) => {
       { openLinks &&  <div className="h-[1px] bg-neutral-gray-5"></div>}
       <ul className={`bg-white px-10 space-y-5 py-3 ${openLinks || 'hidden'}`}>
         {
-          links.map((item) => (
-            <li className=" capitalize text-sm font-plus-jakarta font-normal">
+          links.map((item, index) => (
+            <li key={index} className=" capitalize text-sm font-plus-jakarta font-normal">
               {item}
             </li>
           ))

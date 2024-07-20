@@ -47,8 +47,8 @@ const Search = ({ closeSearch, showSearch, position, closeActiveNavButton }: { c
             <h4 className=" capitalize text-base font-plus-jakarta font-semibold border-b border-neutral-400 py-1">need some inspiration?</h4>
             <ul className=" space-y-3 my-5">
               {
-                inspiration.map((item) => (
-                  <SearchInspirationItem img={item.img} />
+                inspiration.map((item, index) => (
+                  <SearchInspirationItem key={index} img={item.img} />
                 ))
               }
             </ul>

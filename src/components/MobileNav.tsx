@@ -4,6 +4,8 @@ import MobileMenu from "./MobileMenu";
 import { useEffect, useState } from "react";
 import Search from "./Search";
 import Login from "./Login";
+import { useAppSelector } from "../redux/hooks";
+import { selectAuth } from "../redux/feature/auth/authSlice";
 
 const MobileNav = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -40,7 +42,7 @@ const MobileNav = () => {
       </div>
       <MobileMenu showMenu={showMenu} closeMenu={closeMenu} />
       <Search showSearch={showSearch} closeSearch={closeSearch} />
-      {/* <Login /> */}
+      <Login />
     </section>
   )
 }
