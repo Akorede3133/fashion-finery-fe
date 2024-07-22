@@ -7,15 +7,22 @@ import googleLogo from '../assets/google.png';
 import Input from "./Input";
 import PasswordInput from "./PasswordInput";
 
-const Login = () => {
+const Login = ({ position, closeActiveNavButton }:{ closeActiveNavButton: () => void,  position: number} ) => {
   const { showAuthPage } = useAppSelector(selectAuth)
   const dispatch = useAppDispatch();
   const closeLogin = () => {
     dispatch(hideAuthPage());
+    closeActiveNavButton();
+
   }  
 
   return (
-    <div className={`fixed sm:hidden bg-white top-0 min-h-screen h-full w-full left-0 z-[1000] overflow-y-auto ${showAuthPage ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all duration-[0.75s]`}>
+    <div  className={`w-full fixed h-screen left-0 top-0 sm:top-[70px] bg-[rgba(0,0,0,0.3)] z-[1000] ${showAuthPage ? 'block': 'hidden'}`}>
+       <div className={` fixed sm:hiddn bg-white top-0 sm:top-[70px] min-h-screen h-full sm:h-[80vh] sm:min-h-[90vh] w-full sm:w-[496px] left-0  overflow-y-aut ${showAuthPage ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all sm:transition-none duration-[0.75s] flex flex-col `} style={
+      {
+        left: `${position as number - 435}px`
+      }
+    }>
       <PageHead closeMenu={closeLogin} text='login' />
       <div className=" min-h-screen h-full flex flex-col items-center justify-center">
         <div className="flex justify-center">
@@ -61,7 +68,9 @@ const Login = () => {
           <p className="text-sm">New to Manelo? <button type="button" className="text-shade-4 capitalize font-semibold">sign up</button></p>
       </div>
       </div>
+      </div>
     </div>
+   
   )
 }
 

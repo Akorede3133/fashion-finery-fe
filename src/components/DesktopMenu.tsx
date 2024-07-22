@@ -9,8 +9,8 @@ const links = [
   'new arrivals',
   'all'
 ]
-const DesktopMenu = ({ coordY } : { coordY: number }) => {  
-  const left = `${coordY}px`;
+const DesktopMenu = ({ position } : { position: number }) => {  
+  const left = `${position}px`;
   return (
     <div className="hidden sm:block absolute top-[85px] z-[9999] bg-[rgba(0,0,0,0.5)] left-0 w-full h-full">
       <div className={`absolute top-0 z-[1000] bg-white rounded-sm`} style={{

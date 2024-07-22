@@ -7,38 +7,42 @@ import { MdOutlineCardGiftcard } from 'react-icons/md';
 import DesktopMenu from './DesktopMenu';
 import Search from './Search';
 import NavButton from './NavButton';
+import Login from './Login';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { displayAuthPage, selectAuth } from '../redux/feature/auth/authSlice';
 
 const DesktopNav = () => {
+  const { showAuthPage } = useAppSelector(selectAuth)
   const [activeLink, setActiveLink] = useState(0)
   const [isnavLinksClicked, setIsNavLinksClicked] = useState(false);
   const [isNavButtonClicked, setIsNavButtonClicked] = useState(false);
   const [showSearch, setShowSearch]  = useState(false);
   const [activeNavButton, setActiveNavButton] = useState(0)
-
-  console.log(activeNavButton);
   
-
   const [showMenu, setShowMenu] = useState(false);
-  const [coordY, setCoordY] = useState(0);
+  const [position, setPosition] = useState(0);
   const handleNavigation = (index: number, positionY: number) => {
     setActiveLink(index);
     setIsNavLinksClicked(true);
     setShowMenu(true);
-    setCoordY(positionY)
+    setPosition(positionY)
   }
   const closeSearch = () => setShowSearch(false);
-
+  const dispatch = useAppDispatch();
   const navRef = useRef<HTMLUListElement>(null);
   const handleShowSearch = (e, index) => {
     const positionX = e.target.getBoundingClientRect().left;
-    console.log(positionX);
-    setCoordY(positionX)
+    setPosition(positionX)
     setShowSearch(true)
     setActiveNavButton(index);
     setIsNavButtonClicked(true);
-
-    
-    
+  }
+  const handleShowLogin = (e, index) => {
+    const positionX = e.target.getBoundingClientRect().left;
+    setPosition(positionX)
+    dispatch(displayAuthPage());
+    setActiveNavButton(index);
+    setIsNavButtonClicked(true);
   }
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -54,13 +58,13 @@ const DesktopNav = () => {
   }, [])
 
   useEffect(() => {
-    if (showMenu || showSearch) {
+    if (showMenu || showSearch || showAuthPage) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'visible'
     }
 
-  }, [showMenu, showSearch])
+  }, [showMenu, showSearch, showAuthPage])
 
   const NavButtons = [
     {
@@ -71,7 +75,7 @@ const DesktopNav = () => {
     {
       name: 'profile',
       icon: <HiOutlineUser className="text-xl" />,
-      action: (e) => handleShowSearch(e, 1)
+      action: (e) => handleShowLogin(e, 1)
     },
     {
       name: 'gift',
@@ -108,8 +112,9 @@ const DesktopNav = () => {
           ))
         }
       </div>
-      { showMenu && <DesktopMenu coordY={coordY} /> }
-      <Search showSearch={showSearch} closeSearch={closeSearch} position={coordY} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
+      { showMenu && <DesktopMenu position={position} /> }
+      <Search showSearch={showSearch} closeSearch={closeSearch} position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
+      <Login position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
   </section>
   )
 }
