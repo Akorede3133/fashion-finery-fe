@@ -25,7 +25,7 @@ const MobileMenu = ({ showMenu, closeMenu }: { showMenu: boolean, closeMenu: () 
     
   }
   return (
-    <section className={`fixed sm:hidden bg-white top-0 min-h-screen h-full w-full left-0 z-[1000] overflow-y-auto ${showMenu ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all duration-[0.75s]`}>
+    <section className={`fixed sm:hidden bg-white top-0 min-h-screen h-full w-full left-0 z-[1000] overflow-hidden overflow-y-auto ${showMenu ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all duration-[0.75s]`}>
       <MenuHead closeMenu={closeMenu} text="" />
       <div className="bg-white">
         <div className="flex gap-4 p-5 ">

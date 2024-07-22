@@ -1,11 +1,9 @@
 import { hideAuthPage, selectAuth } from "../redux/feature/auth/authSlice"
 import { useAppDispatch, useAppSelector } from "../redux/hooks"
 import PageHead from "./PageHead"
-import appleLogo from '../assets/apple.png';
-import facebookLogo from '../assets/facebook.png';
-import googleLogo from '../assets/google.png';
 import Input from "./Input";
 import PasswordInput from "./PasswordInput";
+import AuthSocialLogos from "./AuthSocialLogos";
 
 const Login = ({ position, closeActiveNavButton }:{ closeActiveNavButton: () => void,  position: number} ) => {
   const { showAuthPage } = useAppSelector(selectAuth)
@@ -18,37 +16,14 @@ const Login = ({ position, closeActiveNavButton }:{ closeActiveNavButton: () => 
 
   return (
     <div  className={`w-full fixed h-screen left-0 top-0 sm:top-[70px] bg-[rgba(0,0,0,0.3)] z-[1000] ${showAuthPage ? 'block': 'hidden'}`}>
-       <div className={` fixed sm:hiddn bg-white top-0 sm:top-[70px] min-h-screen h-full sm:h-[80vh] sm:min-h-[90vh] w-full sm:w-[496px] left-0  overflow-y-aut ${showAuthPage ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all sm:transition-none duration-[0.75s] flex flex-col `} style={
+       <div className={` fixed sm:hiddn bg-white top-0 sm:top-[70px] min-h-screen h-full sm:h-[80vh] sm:min-h-[90vh] w-full sm:w-[496px] left-0 ${showAuthPage ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all sm:transition-none duration-[0.75s] flex flex-col `} style={
       {
         left: `${position as number - 435}px`
       }
     }>
       <PageHead closeMenu={closeLogin} text='login' />
       <div className=" min-h-screen h-full flex flex-col items-center justify-center">
-        <div className="flex justify-center">
-          <ul className="flex items-center gap-2">
-            <li>
-              <button className="border border-neutral-300 p-1 rounded-md">
-                <img src={appleLogo} alt="Apple logo" />
-              </button>
-            </li>
-            <li>
-              <button className="border border-neutral-300 p-1 rounded-md">
-                <img src={googleLogo} alt="Google logo" />
-              </button>
-            </li>
-            <li>
-              <button className="border border-neutral-300 p-1 rounded-md">
-                <img src={facebookLogo} alt="Facebook logo" />
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div className=" grid grid-cols-[1fr_0fr_1fr] items-center gap-2 pt-[32px] pb-[40px] w-[90%] mx-auto">
-          <div className=" w-full h-[1px] bg-neutral-gray-10"></div>
-          <p>or</p>
-          <div className=" w-full h-[1px] bg-neutral-gray-10"></div>
-        </div>
+        <AuthSocialLogos />
         <form action="" className="w-[90%] mx-auto">
           <section className="space-y-4">
           <Input type="email" placeholder='E-mail' />
