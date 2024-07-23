@@ -9,10 +9,11 @@ import Search from './Search';
 import NavButton from './NavButton';
 import Login from './Login';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { displayAuthPage, selectAuth } from '../redux/feature/auth/authSlice';
+import { displayLoginPage, selectAuth } from '../redux/feature/auth/authSlice';
+import Register from './Register';
 
 const DesktopNav = () => {
-  const { showAuthPage } = useAppSelector(selectAuth)
+  const { showLoginPage, showRegisterPage } = useAppSelector(selectAuth)
   const [activeLink, setActiveLink] = useState(0)
   const [isnavLinksClicked, setIsNavLinksClicked] = useState(false);
   const [isNavButtonClicked, setIsNavButtonClicked] = useState(false);
@@ -40,7 +41,7 @@ const DesktopNav = () => {
   const handleShowLogin = (e, index) => {
     const positionX = e.target.getBoundingClientRect().left;
     setPosition(positionX)
-    dispatch(displayAuthPage());
+    dispatch(displayLoginPage());
     setActiveNavButton(index);
     setIsNavButtonClicked(true);
   }
@@ -58,13 +59,13 @@ const DesktopNav = () => {
   }, [])
 
   useEffect(() => {
-    if (showMenu || showSearch || showAuthPage) {
+    if (showMenu || showSearch || showLoginPage) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'visible'
     }
 
-  }, [showMenu, showSearch, showAuthPage])
+  }, [showMenu, showSearch, showLoginPage])
 
   const NavButtons = [
     {
@@ -114,7 +115,8 @@ const DesktopNav = () => {
       </div>
       { showMenu && <DesktopMenu position={position} /> }
       <Search showSearch={showSearch} closeSearch={closeSearch} position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
-      <Login position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
+      { showLoginPage && <Login position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} /> }
+      { showRegisterPage && <Register position={position} /> }
   </section>
   )
 }

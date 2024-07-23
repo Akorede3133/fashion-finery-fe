@@ -1,4 +1,4 @@
-import { hideAuthPage, selectAuth } from "../redux/feature/auth/authSlice"
+import { displayRegisterPage, hideLoginPage, selectAuth } from "../redux/feature/auth/authSlice"
 import { useAppDispatch, useAppSelector } from "../redux/hooks"
 import PageHead from "./PageHead"
 import Input from "./Input";
@@ -6,17 +6,21 @@ import PasswordInput from "./PasswordInput";
 import AuthSocialLogos from "./AuthSocialLogos";
 
 const Login = ({ position, closeActiveNavButton }:{ closeActiveNavButton: () => void,  position: number} ) => {
-  const { showAuthPage } = useAppSelector(selectAuth)
+  const { showLoginPage } = useAppSelector(selectAuth)
   const dispatch = useAppDispatch();
   const closeLogin = () => {
-    dispatch(hideAuthPage());
+    dispatch(hideLoginPage());
     closeActiveNavButton();
 
   }  
+  const showRegister = () => {
+    dispatch(hideLoginPage());
+    dispatch(displayRegisterPage())
+  }
 
   return (
-    <div  className={`w-full fixed h-screen left-0 top-0 sm:top-[70px] bg-[rgba(0,0,0,0.3)] z-[1000] ${showAuthPage ? 'block': 'hidden'}`}>
-       <div className={` fixed sm:hiddn bg-white top-0 sm:top-[70px] min-h-screen h-full sm:h-[80vh] sm:min-h-[90vh] w-full sm:w-[496px] left-0 ${showAuthPage ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all sm:transition-none duration-[0.75s] flex flex-col `} style={
+    <div  className={`w-full fixed h-screen left-0 top-0 sm:top-[70px] bg-[rgba(0,0,0,0.3)] z-[1000] ${showLoginPage ? 'block': 'hidden'}`}>
+       <div className={` fixed sm:hiddn bg-white top-0 sm:top-[70px] min-h-screen h-full sm:h-[80vh] sm:min-h-[90vh] w-full sm:w-[496px] left-0 ${showLoginPage ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all sm:transition-none duration-[0.75s] flex flex-col `} style={
       {
         left: `${position as number - 435}px`
       }
@@ -40,7 +44,7 @@ const Login = ({ position, closeActiveNavButton }:{ closeActiveNavButton: () => 
         </form>
         <div className="flex justify-center flex-col items-center gap-2">
           <p className=" text-sm text-center text-neutral-gray-6">Signing up for a Manelo account means you agree to the Privacy policy, Terms of Services and Affiliate Terms.</p>
-          <p className="text-sm">New to Manelo? <button type="button" className="text-shade-4 capitalize font-semibold">sign up</button></p>
+          <p className="text-sm">New to Manelo? <button type="button" className="text-shade-4 capitalize font-semibold" onClick={showRegister}>sign up</button></p>
       </div>
       </div>
       </div>

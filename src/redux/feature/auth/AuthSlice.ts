@@ -2,25 +2,34 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 
 export type AuthState = {
-  showAuthPage: boolean
+  showLoginPage: boolean;
+  showRegisterPage: boolean;
 }
 const initialState: AuthState = {
-  showAuthPage: false,
+  showLoginPage: false,
+  showRegisterPage: false
 }
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    displayAuthPage: (state) => {
-      state.showAuthPage = true;
+    displayLoginPage: (state) => {
+      state.showLoginPage = true;
     },
-    hideAuthPage: (state) => {
-      state.showAuthPage = false;
+    hideLoginPage: (state) => {
+      state.showLoginPage = false;
+
+    },
+    displayRegisterPage: (state) => {
+      state.showRegisterPage = true;
+    },
+    hideRegisterPage: (state) => {
+      state.showRegisterPage = false;
 
     }
   }
 })
 
-export const { displayAuthPage, hideAuthPage }  = authSlice.actions;
+export const { displayLoginPage, hideLoginPage, displayRegisterPage, hideRegisterPage }  = authSlice.actions;
 export const selectAuth = (state: RootState) => state.auth;
 export default authSlice.reducer;

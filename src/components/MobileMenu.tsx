@@ -2,13 +2,12 @@ import { HiOutlineMail } from "react-icons/hi"
 import MenuShoppingOptionsWithIcons from "./MenuShoppingOptionsWithIcons"
 import MenuShoppingOption from "./MenuShoppingOption"
 import { MdOutlineCardGiftcard } from "react-icons/md"
-import { HiOutlineHeart, HiOutlineMagnifyingGlass, HiOutlineUser, HiOutlineXMark } from "react-icons/hi2"
+import { HiOutlineHeart, HiOutlineMagnifyingGlass, HiOutlineUser } from "react-icons/hi2"
 import womenMenuPicture from '../assets/women/women_menu_picture.png';
 import menMenuPicture from '../assets/men/men_menu_picture.png';
-import { useState } from "react"
 import MenuHead from "./MenuHead"
 import { useAppDispatch } from "../redux/hooks"
-import { displayAuthPage } from "../redux/feature/auth/authSlice"
+import { displayLoginPage } from "../redux/feature/auth/authSlice"
 const newArrivalLinks = [
   'coats & jacket',
   'Trench coat',
@@ -19,8 +18,8 @@ const newArrivalLinks = [
 
 const MobileMenu = ({ showMenu, closeMenu }: { showMenu: boolean, closeMenu: () => void }) => {
   const dispatch = useAppDispatch();
-  const handleShowAuthPage = () => {
-    dispatch(displayAuthPage());
+  const handleLoginPage = () => {
+    dispatch(displayLoginPage());
     console.log('Auth');
     
   }
@@ -43,7 +42,7 @@ const MobileMenu = ({ showMenu, closeMenu }: { showMenu: boolean, closeMenu: () 
           <MenuShoppingOptionsWithIcons icon={<MdOutlineCardGiftcard className=" text-2xl" />} name='gift card' />
           <MenuShoppingOptionsWithIcons icon={<HiOutlineHeart className=" text-2xl" />} name='wishlist' />
           <MenuShoppingOptionsWithIcons icon={<HiOutlineMagnifyingGlass className=" text-2xl" />} name='search' />
-          <MenuShoppingOptionsWithIcons icon={<HiOutlineUser className=" text-2xl" />} name='login / register' action={handleShowAuthPage} />
+          <MenuShoppingOptionsWithIcons icon={<HiOutlineUser className=" text-2xl" />} name='login / register' action={handleLoginPage} />
         </ul>
         <div className="px-5">
           <p>Need help?</p>
