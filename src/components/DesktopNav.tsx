@@ -58,14 +58,16 @@ const DesktopNav = () => {
     }
   }, [])
 
+  console.log(showMenu);
+
   useEffect(() => {
-    if (showMenu || showSearch || showLoginPage) {
+    if (showMenu || showSearch || showLoginPage || showRegisterPage) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'visible'
     }
 
-  }, [showMenu, showSearch, showLoginPage])
+  }, [showMenu, showSearch, showLoginPage, showRegisterPage])
 
   const NavButtons = [
     {

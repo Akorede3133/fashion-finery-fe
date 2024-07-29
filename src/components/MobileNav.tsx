@@ -12,6 +12,8 @@ const MobileNav = () => {
   const { showLoginPage, showRegisterPage } = useAppSelector(selectAuth)
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch]  = useState(false);
+  console.log(showMenu);
+  
   useEffect(() => {
     if (showMenu || showSearch || showLoginPage || showRegisterPage) {
       document.body.style.overflow = 'hidden'

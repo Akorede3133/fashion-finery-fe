@@ -5,16 +5,16 @@ import Input from "./Input";
 import PasswordInput from "./PasswordInput";
 import AuthSocialLogos from "./AuthSocialLogos";
 
-const Login = ({ position, closeActiveNavButton }:{ closeActiveNavButton: () => void,  position: number} ) => {
+const Login = ({ position, closeActiveNavButton }:{ closeActiveNavButton?: () => void,  position: number} ) => {
   const { showLoginPage } = useAppSelector(selectAuth)
   const dispatch = useAppDispatch();
   const closeLogin = () => {
     dispatch(hideLoginPage());
-    closeActiveNavButton();
+    closeActiveNavButton?.();
 
   }  
   const showRegister = () => {
-    dispatch(hideLoginPage());
+    dispatch(hideLoginPage());    
     dispatch(displayRegisterPage())
   }
 
