@@ -9,7 +9,7 @@ import Search from './Search';
 import NavButton from './NavButton';
 import Login from './Login';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { displayLoginPage, selectAuth } from '../redux/feature/auth/authSlice';
+import { displayLoginPage, hideLoginPage, selectAuth } from '../redux/feature/auth/authSlice';
 import Register from './Register';
 
 const DesktopNav = () => {
@@ -26,25 +26,35 @@ const DesktopNav = () => {
     setActiveLink(index);
     setIsNavLinksClicked(true);
     setShowMenu(true);
+    setShowSearch(false);
+    dispatch(hideLoginPage());
+    setIsNavButtonClicked(false);
     setPosition(positionY)
   }
   const closeSearch = () => setShowSearch(false);
   const dispatch = useAppDispatch();
   const navRef = useRef<HTMLUListElement>(null);
-  const handleShowSearch = (e, index) => {
-    const positionX = e.target.getBoundingClientRect().left;
-    setPosition(positionX)
-    setShowSearch(true)
+  const hideNavMenus = (index) => {
     setActiveNavButton(index);
     setIsNavButtonClicked(true);
+    setShowMenu(false)
+    setIsNavLinksClicked(false);
+  }
+  const handleShowSearch = (e, index) => {
+    const positionX = e.target.getBoundingClientRect().left;
+    dispatch(hideLoginPage());
+    setPosition(positionX)
+    setShowSearch(true)
+    hideNavMenus(index)
   }
   const handleShowLogin = (e, index) => {
     const positionX = e.target.getBoundingClientRect().left;
     setPosition(positionX)
     dispatch(displayLoginPage());
-    setActiveNavButton(index);
-    setIsNavButtonClicked(true);
+    hideNavMenus(index)
+    setShowSearch(false)
   }
+
   useEffect(() => {
     const handleOutsideClick = (e) => {
     if (navRef.current && !navRef.current.contains(e.target)) {
@@ -56,9 +66,7 @@ const DesktopNav = () => {
     return () => {
       document.removeEventListener('click', handleOutsideClick);
     }
-  }, [])
-
-  console.log(showMenu);
+    }, [])
 
   useEffect(() => {
     if (showMenu || showSearch || showLoginPage || showRegisterPage) {

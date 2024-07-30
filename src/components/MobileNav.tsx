@@ -12,7 +12,6 @@ const MobileNav = () => {
   const { showLoginPage, showRegisterPage } = useAppSelector(selectAuth)
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch]  = useState(false);
-  console.log(showMenu);
   
   useEffect(() => {
     if (showMenu || showSearch || showLoginPage || showRegisterPage) {
@@ -46,7 +45,7 @@ const MobileNav = () => {
       </div>
       <MobileMenu showMenu={showMenu} closeMenu={closeMenu} />
       <Search showSearch={showSearch} closeSearch={closeSearch} />
-      { showLoginPage && <Login /> }
+      { showLoginPage && <Login closeActiveNavButton={() => {}} /> }
       {showRegisterPage && <Register /> }
     </section>
   )
