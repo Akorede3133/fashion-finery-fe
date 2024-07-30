@@ -6,13 +6,13 @@ import PasswordInput from "./PasswordInput";
 import AuthSocialLogos from "./AuthSocialLogos";
 import { useEffect, useRef } from "react";
 
-const Login = ({ position, closeActiveNavButton }:{ closeActiveNavButton: () => void,  position: number} ) => {
+const Login = ({ position, closeActiveNavButton }:{ closeActiveNavButton?: () => void,  position?: number} ) => {
   const { showLoginPage } = useAppSelector(selectAuth)
   const loginRef = useRef(null);
   const dispatch = useAppDispatch();
   const closeLogin = () => {
     dispatch(hideLoginPage());    
-    closeActiveNavButton();
+    closeActiveNavButton?.();
 
   }  
   const showRegister = () => {

@@ -11,6 +11,7 @@ import Login from './Login';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { displayLoginPage, hideLoginPage, hideRegisterPage, selectAuth } from '../redux/feature/auth/authSlice';
 import Register from './Register';
+import ConfirmEmail from './ConfirmEmail';
 
 const DesktopNav = () => {
   const { showLoginPage, showRegisterPage } = useAppSelector(selectAuth)
@@ -127,8 +128,9 @@ const DesktopNav = () => {
       </div>
       { showMenu && <DesktopMenu position={position} /> }
       <Search showSearch={showSearch} closeSearch={closeSearch} position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
-      { showLoginPage && <Login position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} /> }
-      { showRegisterPage && <Register position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} /> }
+      <Login position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
+      <Register position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
+      { showRegisterPage  && <ConfirmEmail position={position} /> }
   </section>
   )
 }

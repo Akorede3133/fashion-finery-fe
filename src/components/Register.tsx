@@ -6,12 +6,12 @@ import PageHead from "./PageHead"
 import PasswordInput from "./PasswordInput"
 import logo from '../assets/logo.png';
 
-const Register = ({ position, closeActiveNavButton }) => {
+const Register = ({ position, closeActiveNavButton }:{ closeActiveNavButton?: () => void,  position?: number}) => {
   const { showRegisterPage } = useAppSelector(selectAuth)
   const dispatch = useAppDispatch();
   const closeRegister = () => {
     dispatch(hideRegisterPage());    
-    closeActiveNavButton();
+    closeActiveNavButton?.();
   }
   const showLoginPage = () => {
     dispatch(displayLoginPage());

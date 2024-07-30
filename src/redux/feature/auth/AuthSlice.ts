@@ -4,10 +4,12 @@ import { RootState } from "../../store";
 export type AuthState = {
   showLoginPage: boolean;
   showRegisterPage: boolean;
+  showConfirmEmail: boolean;
 }
 const initialState: AuthState = {
   showLoginPage: false,
-  showRegisterPage: false
+  showRegisterPage: false,
+  showConfirmEmail: true
 }
 const authSlice = createSlice({
   name: 'auth',
@@ -26,6 +28,9 @@ const authSlice = createSlice({
     hideRegisterPage: (state) => {
       state.showRegisterPage = false;
 
+    },
+    displayConfirmEmail: (state) => {
+      state.showConfirmEmail = true;
     }
   }
 })
