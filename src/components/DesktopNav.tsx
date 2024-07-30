@@ -9,7 +9,7 @@ import Search from './Search';
 import NavButton from './NavButton';
 import Login from './Login';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { displayLoginPage, hideLoginPage, selectAuth } from '../redux/feature/auth/authSlice';
+import { displayLoginPage, hideLoginPage, hideRegisterPage, selectAuth } from '../redux/feature/auth/authSlice';
 import Register from './Register';
 
 const DesktopNav = () => {
@@ -28,6 +28,7 @@ const DesktopNav = () => {
     setShowMenu(true);
     setShowSearch(false);
     dispatch(hideLoginPage());
+    dispatch(hideRegisterPage())
     setIsNavButtonClicked(false);
     setPosition(positionY)
   }
@@ -43,6 +44,7 @@ const DesktopNav = () => {
   const handleShowSearch = (e, index) => {
     const positionX = e.target.getBoundingClientRect().left;
     dispatch(hideLoginPage());
+    dispatch(hideRegisterPage())
     setPosition(positionX)
     setShowSearch(true)
     hideNavMenus(index)
@@ -126,7 +128,7 @@ const DesktopNav = () => {
       { showMenu && <DesktopMenu position={position} /> }
       <Search showSearch={showSearch} closeSearch={closeSearch} position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
       { showLoginPage && <Login position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} /> }
-      { showRegisterPage && <Register position={position} /> }
+      { showRegisterPage && <Register position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} /> }
   </section>
   )
 }

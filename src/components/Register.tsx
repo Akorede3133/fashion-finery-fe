@@ -6,9 +6,13 @@ import PageHead from "./PageHead"
 import PasswordInput from "./PasswordInput"
 import logo from '../assets/logo.png';
 
-const Register = ({ position }) => {
+const Register = ({ position, closeActiveNavButton }) => {
   const { showRegisterPage } = useAppSelector(selectAuth)
   const dispatch = useAppDispatch();
+  const closeRegister = () => {
+    dispatch(hideRegisterPage());    
+    closeActiveNavButton();
+  }
   const showLoginPage = () => {
     dispatch(displayLoginPage());
     dispatch(hideRegisterPage());
@@ -21,7 +25,7 @@ const Register = ({ position }) => {
         left: `${position as number - 435}px`
       }
     }>
-      <PageHead closeMenu={() => dispatch(hideRegisterPage())} text='Register' />
+      <PageHead closeMenu={closeRegister} text='Register' />
       <div className=" min-h-screen h-full flex flex-col items-center justify-center">
         <div className=" mb-[24px] ">
           <img src={logo} alt="" />
