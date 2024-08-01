@@ -27,7 +27,7 @@ body {
   background-color: #4a1fb8;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 0.4em;
 }
  
@@ -39,4 +39,4 @@ body {
   background-color: darkgrey;
   outline: 1px solid slategrey;
   border-radius: 10px;
-}
+} */

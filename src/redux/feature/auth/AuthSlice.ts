@@ -5,11 +5,13 @@ export type AuthState = {
   showLoginPage: boolean;
   showRegisterPage: boolean;
   showConfirmEmail: boolean;
+  loggedIn: boolean;
 }
 const initialState: AuthState = {
   showLoginPage: false,
   showRegisterPage: false,
-  showConfirmEmail: true
+  showConfirmEmail: false,
+  loggedIn: true,
 }
 const authSlice = createSlice({
   name: 'auth',
