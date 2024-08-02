@@ -141,7 +141,7 @@ const DesktopNav = () => {
       <Login position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
       <Register position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
       { showRegisterPage  && <ConfirmEmail position={position} /> }
-      { showAccount &&  <MyAccountDesktop position={position} /> }
+      { showAccount &&  <MyAccountDesktop position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} /> }
   </section>
   )
 }

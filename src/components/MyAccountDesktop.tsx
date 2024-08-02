@@ -5,11 +5,12 @@ import { HiOutlineHeart, HiOutlineLockClosed, HiOutlineUser, HiOutlineXMark } fr
 import { Link } from "react-router-dom";
 import { CiLogout } from "react-icons/ci";
 
-const MyAccountDesktop = ({ position }) => {
+const MyAccountDesktop = ({ position, closeActiveNavButton }) => {
   const { loggedIn} = useAppSelector(selectAuth);
   const dispatch = useAppDispatch();
   const hideAccountMenu = () => {
     dispatch(setShowAccount(false));
+    closeActiveNavButton();
   }
   return (
     <div className={`w-full fixed h-screen left-0 top-0 sm:top-[70px] bg-[rgba(0,0,0,0.3)] z-[1000] ${loggedIn ? 'block': 'hidden'}`}>
