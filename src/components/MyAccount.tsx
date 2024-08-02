@@ -10,7 +10,7 @@ const MyAccount = () => {
 
   return (
     <li className={`border-b-[1px] border-b-neutral-gray-1 relative ${openLinks && 'bg-tint-5' }`}>
-      <button className={`py-3 px-5 flex gap-[4px] items-center justify-between w-full ${openLinks && ' border-l-4 border-blue-500 text-tint-1'}`} onClick={() => setOpenLinks((prev) => !prev)}>
+      <button className={`py-3 px-5  flex gap-[4px] items-center justify-between w-full ${openLinks && ' border-l-4 border-blue-500 text-tint-1'}`} onClick={() => setOpenLinks((prev) => !prev)}>
         <div className="flex items-center gap-1">
           <HiOutlineUser className="text-2xl text-gray-900"/>
           <span className=" font-plus-jakarta capitalize">my account</span>

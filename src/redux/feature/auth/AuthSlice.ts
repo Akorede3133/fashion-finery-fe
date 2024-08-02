@@ -6,12 +6,14 @@ export type AuthState = {
   showRegisterPage: boolean;
   showConfirmEmail: boolean;
   loggedIn: boolean;
+  showAccount: boolean;
 }
 const initialState: AuthState = {
   showLoginPage: false,
   showRegisterPage: false,
   showConfirmEmail: false,
   loggedIn: true,
+  showAccount: false,
 }
 const authSlice = createSlice({
   name: 'auth',
@@ -33,10 +35,13 @@ const authSlice = createSlice({
     },
     displayConfirmEmail: (state) => {
       state.showConfirmEmail = true;
+    },
+    setShowAccount: (state, {payload }) => {
+      state.showAccount = payload;
     }
   }
 })
 
-export const { displayLoginPage, hideLoginPage, displayRegisterPage, hideRegisterPage }  = authSlice.actions;
+export const { displayLoginPage, hideLoginPage, displayRegisterPage, hideRegisterPage, setShowAccount }  = authSlice.actions;
 export const selectAuth = (state: RootState) => state.auth;
 export default authSlice.reducer;
