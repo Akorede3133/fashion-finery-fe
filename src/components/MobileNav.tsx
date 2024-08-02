@@ -3,18 +3,25 @@ import logo from '../assets/logo.png';
 import MobileMenu from "./MobileMenu";
 import { useEffect, useState } from "react";
 import Search from "./Search";
+import Login from "./Login";
+import { useAppSelector } from "../redux/hooks";
+import { selectAuth } from "../redux/feature/auth/authSlice";
+import Register from "./Register";
+import ConfirmEmail from "./ConfirmEmail";
 
 const MobileNav = () => {
+  const { showLoginPage, showRegisterPage, showConfirmEmail } = useAppSelector(selectAuth)
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch]  = useState(false);
+  
   useEffect(() => {
-    if (showMenu || showSearch) {
+    if (showMenu || showSearch || showLoginPage || showRegisterPage || showConfirmEmail) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'visible'
     }
 
-  }, [showMenu, showSearch])
+  }, [showMenu, showSearch, showRegisterPage, showLoginPage, showConfirmEmail])
   const closeMenu = () => setShowMenu(false);
   const closeSearch = () => setShowSearch(false);
 
@@ -39,6 +46,9 @@ const MobileNav = () => {
       </div>
       <MobileMenu showMenu={showMenu} closeMenu={closeMenu} />
       <Search showSearch={showSearch} closeSearch={closeSearch} />
+      <Login /> 
+      <Register />
+      <ConfirmEmail />
     </section>
   )
 }

@@ -30,8 +30,8 @@ const BestSeller = () => {
               <ul className='flex gap-1'>
                 {
                   [1, 2, 3, 4].map((item) => (
-                    <li>
-                      <MdStarRate key={item} className=' text-[#ffc000] text-xl' />
+                    <li  key={item}>
+                      <MdStarRate className=' text-[#ffc000] text-xl' />
                     </li>
                   ))
                 }

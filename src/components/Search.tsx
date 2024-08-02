@@ -25,8 +25,7 @@ const Search = ({ closeSearch, showSearch, position, closeActiveNavButton }: { c
       <div className={` fixed sm:hiddn bg-shade-4 sm:bg-white top-0 sm:top-[70px] min-h-screen h-full sm:h-[80vh] sm:min-h-[90vh] w-full sm:w-[496px] left-0  overflow-y-aut ${showSearch ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all sm:transition-none duration-[0.75s] flex flex-col `} style={
       {
         left: `${position as number - 435}px`
-      }
-    }>
+      }}>
       <div className="">
         <MenuHead text='search' closeMenu={handleCloseSearch} />
         <div className="bg-white py-5">
@@ -47,8 +46,8 @@ const Search = ({ closeSearch, showSearch, position, closeActiveNavButton }: { c
             <h4 className=" capitalize text-base font-plus-jakarta font-semibold border-b border-neutral-400 py-1">need some inspiration?</h4>
             <ul className=" space-y-3 my-5">
               {
-                inspiration.map((item) => (
-                  <SearchInspirationItem img={item.img} />
+                inspiration.map((item, index) => (
+                  <SearchInspirationItem key={index} img={item.img} />
                 ))
               }
             </ul>

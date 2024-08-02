@@ -7,39 +7,67 @@ import { MdOutlineCardGiftcard } from 'react-icons/md';
 import DesktopMenu from './DesktopMenu';
 import Search from './Search';
 import NavButton from './NavButton';
+import Login from './Login';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { displayLoginPage, hideLoginPage, hideRegisterPage, selectAuth, setShowAccount } from '../redux/feature/auth/authSlice';
+import Register from './Register';
+import ConfirmEmail from './ConfirmEmail';
+import MyAccount from './MyAccount';
+import MyAccountDesktop from './MyAccountDesktop';
 
 const DesktopNav = () => {
+  const { showLoginPage, showRegisterPage, loggedIn, showAccount } = useAppSelector(selectAuth)
   const [activeLink, setActiveLink] = useState(0)
   const [isnavLinksClicked, setIsNavLinksClicked] = useState(false);
   const [isNavButtonClicked, setIsNavButtonClicked] = useState(false);
   const [showSearch, setShowSearch]  = useState(false);
   const [activeNavButton, setActiveNavButton] = useState(0)
-
-  console.log(activeNavButton);
   
-
   const [showMenu, setShowMenu] = useState(false);
-  const [coordY, setCoordY] = useState(0);
+  const [position, setPosition] = useState(0);
   const handleNavigation = (index: number, positionY: number) => {
     setActiveLink(index);
     setIsNavLinksClicked(true);
     setShowMenu(true);
-    setCoordY(positionY)
+    setShowSearch(false);
+    dispatch(hideLoginPage());
+    dispatch(hideRegisterPage())
+    dispatch(setShowAccount(false))
+    setIsNavButtonClicked(false);
+    setPosition(positionY)
   }
   const closeSearch = () => setShowSearch(false);
-
+  const dispatch = useAppDispatch();
   const navRef = useRef<HTMLUListElement>(null);
-  const handleShowSearch = (e, index) => {
-    const positionX = e.target.getBoundingClientRect().left;
-    console.log(positionX);
-    setCoordY(positionX)
-    setShowSearch(true)
+  const hideNavMenus = (index) => {
     setActiveNavButton(index);
     setIsNavButtonClicked(true);
-
-    
-    
+    setShowMenu(false)
+    setIsNavLinksClicked(false);
   }
+  const handleShowSearch = (e, index) => {
+    const positionX = e.target.getBoundingClientRect().left;
+    dispatch(hideLoginPage());
+    dispatch(hideRegisterPage())
+    setPosition(positionX)
+    setShowSearch(true)
+    hideNavMenus(index)
+  }
+  const handleShowLogin = (e, index) => {
+    const positionX = e.target.getBoundingClientRect().left;
+    setPosition(positionX)
+    dispatch(displayLoginPage());
+    hideNavMenus(index)
+    setShowSearch(false)
+  }
+  const handleShowAccount = (e, index) => {
+    const positionX = e.target.getBoundingClientRect().left;
+    setPosition(positionX)
+    loggedIn ? dispatch(setShowAccount(true)) : dispatch(displayLoginPage())
+    hideNavMenus(index)
+    setShowSearch(false)
+  }
+
   useEffect(() => {
     const handleOutsideClick = (e) => {
     if (navRef.current && !navRef.current.contains(e.target)) {
@@ -51,16 +79,16 @@ const DesktopNav = () => {
     return () => {
       document.removeEventListener('click', handleOutsideClick);
     }
-  }, [])
+    }, [])
 
   useEffect(() => {
-    if (showMenu || showSearch) {
+    if (showMenu || showSearch || showLoginPage || showRegisterPage || showAccount) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'visible'
     }
 
-  }, [showMenu, showSearch])
+  }, [showMenu, showSearch, showLoginPage, showRegisterPage, showAccount])
 
   const NavButtons = [
     {
@@ -71,7 +99,7 @@ const DesktopNav = () => {
     {
       name: 'profile',
       icon: <HiOutlineUser className="text-xl" />,
-      action: (e) => handleShowSearch(e, 1)
+      action: (e) => handleShowAccount(e, 1)
     },
     {
       name: 'gift',
@@ -108,8 +136,12 @@ const DesktopNav = () => {
           ))
         }
       </div>
-      { showMenu && <DesktopMenu coordY={coordY} /> }
-      <Search showSearch={showSearch} closeSearch={closeSearch} position={coordY} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
+      { showMenu && <DesktopMenu position={position} /> }
+      <Search showSearch={showSearch} closeSearch={closeSearch} position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
+      <Login position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
+      <Register position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} />
+      { showRegisterPage  && <ConfirmEmail position={position} /> }
+      { showAccount &&  <MyAccountDesktop position={position} closeActiveNavButton={() => setIsNavButtonClicked(false)} /> }
   </section>
   )
 }
