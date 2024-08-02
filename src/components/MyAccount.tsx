@@ -31,7 +31,7 @@ const MyAccount = ({ closeMenu }) => {
         <MenuOptionsForLoggedInAccount icon={<IoLocationOutline className="text-2xl" />}  text='address' />
         <MenuOptionsForLoggedInAccount icon={<HiOutlineHeart className="text-2xl" />}  text='wishlist' />
         <MenuOptionsForLoggedInAccount icon={<MdOutlineBorderColor  className="text-2xl" />}  text='order tracking' />
-        <MenuOptionsForLoggedInAccount icon={<MdOutlineLogout  className="text-2xl" />}  text='order tracking' />
+        <MenuOptionsForLoggedInAccount icon={<MdOutlineLogout  className="text-2xl" />}  text='log out' />
       </ul>
       }
         

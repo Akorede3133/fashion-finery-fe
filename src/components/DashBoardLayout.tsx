@@ -8,21 +8,23 @@ const DashBoardLayout = () => {
   let headerText = ''
   
  switch(pathname) {
-  case '/dashboard':
-    headerText = 'dashboard';
-    break;
-  default:
-    headerText = ''
+    case '/dashboard':
+      headerText = 'dashboard';
+      break;
+    case '/wishlist':
+      headerText = 'wishlist';
+      break;
+    default:
+      headerText = ''
  }
  
   return (
     <div>
      <DashBoardHeader headerText={headerText} />
-     <div>
-      <DashBoardMenu />
+     <div className="sm:grid grid-cols-[1fr_2.5fr] w-[90%] mx-auto gap-4">
+      <DashBoardMenu path={headerText} />
       <Outlet />
      </div>
-    
     </div>
   )
 }
