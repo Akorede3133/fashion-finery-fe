@@ -16,7 +16,7 @@ const DashBoardMenu = ({ path }) => {
     navigate('/dashboard');
   }
   return (
-    <div className="">
+    <div className=" pb-5">
       <ul className=" border-x-2 border-neutral-gray-4">
         <DashBoardMenuButton action={navigateToDashBoard} icon={<RiDashboardLine className={`text-2xl ${path === 'dashboard' ? 'text-tint-1' : 'text-gray-500'}`} />} text='dashboard'  pathId='dashboard' />
         <DashBoardMenuButton icon={<IoLocationOutline className="text-2xl" />}  text='address' pathId='address' />
