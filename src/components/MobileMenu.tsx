@@ -49,7 +49,7 @@ const MobileMenu = ({ showMenu, closeMenu }: { showMenu: boolean, closeMenu: () 
           <MenuShoppingOptionsWithIcons icon={<HiOutlineHeart className=" text-2xl" />} name='wishlist' />
           <MenuShoppingOptionsWithIcons icon={<HiOutlineMagnifyingGlass className=" text-2xl" />} name='search' />
           <MenuShoppingOptionsWithIcons icon={<HiOutlineUser className=" text-2xl" />} name='login / register' action={handleLoginPage} />
-          <MyAccount />
+          <MyAccount closeMenu={closeMenu} />
         </ul>
         <div className="px-5">
           <p>Need help?</p>

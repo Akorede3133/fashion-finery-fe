@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
 
-const MenuOptionsForLoggedInAccount = ({ icon, text }) => {
+const MenuOptionsForLoggedInAccount = ({ icon, text, action }) => {
   return (
     <li  className=" capitalize text-sm font-plus-jakarta font-normal ">
-      <Link to='dashboard' className="flex gap-2 items-center">
+      <button className="flex gap-2 items-center" onClick={action}>
         { icon }
         <span>{text}</span>
-      </Link>
+      </button>
     </li>
   )
 }
