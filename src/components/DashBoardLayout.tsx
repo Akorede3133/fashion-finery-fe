@@ -19,7 +19,7 @@ const DashBoardLayout = () => {
  }
  
   return (
-    <div>
+    <div className="sm:pb-10">
      <DashBoardHeader headerText={headerText} />
      <div className="sm:grid grid-cols-[1fr_2.5fr] w-[90%] mx-auto gap-4">
       <DashBoardMenu path={headerText} />
