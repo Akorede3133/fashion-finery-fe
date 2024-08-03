@@ -1,6 +1,8 @@
+import Wishlists from "../components/Wishlists"
+
 const Wishlist = () => {
   return (
-    <div>Wishlist</div>
+    <Wishlists />
   )
 }
 
