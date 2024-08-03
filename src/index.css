@@ -26,6 +26,34 @@ body {
   z-index: 1000;
   background-color: #4a1fb8;
 }
+.wish--grid--container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+.wish--grid--container > li:last-child:nth-child(odd) {
+  justify-self: center;
+}
+
+
+@media (min-width: 640px) {
+  .wish--grid--container > :nth-child(4n-3),
+  .wish--grid--container > :nth-child(4n-2) {
+    /* justify-self: end; */
+    margin-left: 50px;
+  }
+  .wish--grid--container > :nth-child(4n-1),
+  .wish--grid--container > :nth-child(4n) {
+    /* justify-self: start; */
+    margin-right: 50px;
+
+  }
+}
+
+
+
+
 
 /* ::-webkit-scrollbar {
   width: 0.4em;
