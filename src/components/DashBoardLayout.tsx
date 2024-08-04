@@ -14,14 +14,17 @@ const DashBoardLayout = () => {
     case '/wishlist':
       headerText = 'wishlist';
       break;
+    case '/order-tracking':
+      headerText = 'order tracking';
+      break;
     default:
       headerText = ''
  }
  
   return (
-    <div className="sm:pb-10">
+    <div className="sm:pb-10 mx-auto">
      <DashBoardHeader headerText={headerText} />
-     <div className="sm:grid grid-cols-[1fr_2.5fr] w-[90%] mx-auto gap-4">
+     <div className="sm:grid grid-cols-[1fr_2.5fr] w-[90% mx-auto gap-4">
       <DashBoardMenu path={headerText} />
       <Outlet />
      </div>
