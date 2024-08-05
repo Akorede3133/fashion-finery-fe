@@ -41,7 +41,7 @@ const authSlice = createSlice({
     }
   }
 })
+export default authSlice.reducer;
 
 export const { displayLoginPage, hideLoginPage, displayRegisterPage, hideRegisterPage, setShowAccount }  = authSlice.actions;
 export const selectAuth = (state: RootState) => state.auth;
-export default authSlice.reducer;
