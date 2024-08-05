@@ -1,4 +1,4 @@
-import { displayRegisterPage, hideLoginPage, selectAuth } from "../redux/authSlice"
+import { displayRegisterPage, hideLoginPage, selectAuth } from "../redux/feature/auth/authSlice"
 import { useAppDispatch, useAppSelector } from "../redux/hooks"
 import PageHead from "./PageHead"
 import Input from "./Input";

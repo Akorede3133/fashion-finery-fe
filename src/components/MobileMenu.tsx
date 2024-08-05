@@ -1,18 +1,13 @@
 import { HiOutlineMail } from "react-icons/hi"
 import MenuShoppingOptionsWithIcons from "./MenuShoppingOptionsWithIcons"
 import MenuShoppingOption from "./MenuShoppingOption"
-import { MdLocationOn, MdOutlineBorderColor, MdOutlineCardGiftcard, MdOutlineLogout } from "react-icons/md"
-import { HiOutlineHeart, HiOutlineMagnifyingGlass, HiOutlinePlus, HiOutlineUser } from "react-icons/hi2"
+import { MdOutlineCardGiftcard } from "react-icons/md"
+import { HiOutlineHeart, HiOutlineMagnifyingGlass, HiOutlineUser } from "react-icons/hi2"
 import womenMenuPicture from '../assets/women/women_menu_picture.png';
 import menMenuPicture from '../assets/men/men_menu_picture.png';
 import MenuHead from "./MenuHead"
 import { useAppDispatch } from "../redux/hooks"
-import { displayLoginPage } from "../redux/authSlice"
-import { RiDashboardLine } from "react-icons/ri"
-import { Link } from "react-router-dom"
-import MenuOptionsForLoggedInAccount from "./MenuOptionsForLoggedInAccount"
-import { TfiLocationPin } from "react-icons/tfi"
-import { IoLocationOutline } from "react-icons/io5"
+import { displayLoginPage } from "../redux/feature/auth/authSlice"
 import MyAccount from "./MyAccount"
 const newArrivalLinks = [
   'coats & jacket',

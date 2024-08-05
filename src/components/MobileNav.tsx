@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Search from "./Search";
 import Login from "./Login";
 import { useAppSelector } from "../redux/hooks";
-import { selectAuth } from "../redux/authSlice";
+import { selectAuth } from "../redux/feature/auth/authSlice";
 import Register from "./Register";
 import ConfirmEmail from "./ConfirmEmail";
 
