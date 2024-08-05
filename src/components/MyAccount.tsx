@@ -4,9 +4,16 @@ import MenuOptionsForLoggedInAccount from "./MenuOptionsForLoggedInAccount"
 import { MdOutlineBorderColor, MdOutlineLogout } from "react-icons/md"
 import { IoLocationOutline } from "react-icons/io5"
 import { RiDashboardLine } from "react-icons/ri"
+import { useNavigate } from "react-router-dom"
 
-const MyAccount = () => {
+const MyAccount = ({ closeMenu }) => {
   const [openLinks, setOpenLinks] = useState(false);
+  const navigate = useNavigate();
+  const navigateToDashboard = () => {
+    navigate('/dashboard');
+    closeMenu();
+
+  }
 
   return (
     <li className={`border-b-[1px] border-b-neutral-gray-1 relative ${openLinks && 'bg-tint-5' }`}>
@@ -20,11 +27,11 @@ const MyAccount = () => {
       </button>
       {
         openLinks && <ul className={`bg-white px-10 space-y-5 py-3`}>
-        <MenuOptionsForLoggedInAccount icon={<RiDashboardLine className="text-2xl" />}  text='dashboard' />
+        <MenuOptionsForLoggedInAccount icon={<RiDashboardLine className="text-2xl" />}  text='dashboard' action={navigateToDashboard} />
         <MenuOptionsForLoggedInAccount icon={<IoLocationOutline className="text-2xl" />}  text='address' />
         <MenuOptionsForLoggedInAccount icon={<HiOutlineHeart className="text-2xl" />}  text='wishlist' />
         <MenuOptionsForLoggedInAccount icon={<MdOutlineBorderColor  className="text-2xl" />}  text='order tracking' />
-        <MenuOptionsForLoggedInAccount icon={<MdOutlineLogout  className="text-2xl" />}  text='order tracking' />
+        <MenuOptionsForLoggedInAccount icon={<MdOutlineLogout  className="text-2xl" />}  text='log out' />
       </ul>
       }
         

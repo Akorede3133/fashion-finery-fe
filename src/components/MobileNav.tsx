@@ -26,7 +26,7 @@ const MobileNav = () => {
   const closeSearch = () => setShowSearch(false);
 
   return (
-    <section className="sm:hidden bg-white flex justify-between items-center px-4 py-3">
+    <section className="lg:hidden bg-white flex justify-between items-center px-4 py-3">
       <div className="flex items-center gap-4">
         <button onClick={() => setShowMenu((prev) => !prev)}>
           <HiBars3 className="text-2xl" />

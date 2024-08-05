@@ -30,15 +30,15 @@ const MobileMenu = ({ showMenu, closeMenu }: { showMenu: boolean, closeMenu: () 
     
   }
   return (
-    <section className={`fixed sm:hidden bg-white top-0 min-h-screen h-full w-full left-0 z-[1000] overflow-hidden overflow-y-auto ${showMenu ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all duration-[0.75s]`}>
+    <section className={`fixed lg:hidden bg-white top-0 min-h-screen h-full w-full left-0 z-[1000] overflow-hidden overflow-y-auto ${showMenu ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all duration-[0.75s]`}>
       <MenuHead closeMenu={closeMenu} text="" />
       <div className="bg-white">
         <div className="flex gap-4 p-5 ">
-          <div>
-            <img src={womenMenuPicture} alt="" className=" object-cover" />
+          <div className="w-[50%]">
+            <img src={womenMenuPicture} alt="" className=" object-cover w-full" />
           </div>
-          <div>
-            <img src={menMenuPicture} alt="" className=" object-cover" />
+          <div className="w-[50%]">
+            <img src={menMenuPicture} alt="" className=" object-cover w-full" />
           </div>
         </div>
         <ul className="py-5">
@@ -49,7 +49,7 @@ const MobileMenu = ({ showMenu, closeMenu }: { showMenu: boolean, closeMenu: () 
           <MenuShoppingOptionsWithIcons icon={<HiOutlineHeart className=" text-2xl" />} name='wishlist' />
           <MenuShoppingOptionsWithIcons icon={<HiOutlineMagnifyingGlass className=" text-2xl" />} name='search' />
           <MenuShoppingOptionsWithIcons icon={<HiOutlineUser className=" text-2xl" />} name='login / register' action={handleLoginPage} />
-          <MyAccount />
+          <MyAccount closeMenu={closeMenu} />
         </ul>
         <div className="px-5">
           <p>Need help?</p>

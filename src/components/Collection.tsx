@@ -3,7 +3,7 @@ import CollectionsHeader from "./CollectionsHeader"
 const Collection = ({ header, description, img }: { header: string, description: string, img: string }) => {
   return (
     <article className="collection">
-      <div className="sm:hidden">
+      <div className="lg:hidden">
        <CollectionsHeader text={header} />
        <img src={img} alt="Women cupc collection" className="w-full" />
 
@@ -15,7 +15,7 @@ const Collection = ({ header, description, img }: { header: string, description:
           </button>
         </div>
       </div>
-      <div className="hidden sm:grid grid-cols-2 gap-10">
+      <div className="hidden lg:grid grid-cols-2 gap-10">
        <img src={img} alt="Women cupc collection" className="w-full" />
         <div className="">
           <CollectionsHeader text={header} />

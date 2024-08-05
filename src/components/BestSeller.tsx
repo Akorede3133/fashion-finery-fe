@@ -14,19 +14,19 @@ const BestSeller = () => {
           Best seller <br />
           product
         </h3>
-        <div className='grid grid-cols-[.5fr_.5fr_1.65fr] sm:grid-cols-[1fr_1fr_1fr_3fr] items-center gap-4 sm:gap-6 w-full'>
-          <div className=' hidden sm:block h-[289px] w-full sm:w-auto  sm:h-[650px] rounded-md'>
-            <img src={womenBestSellerImg1} alt="Best seller product" className='object-cover h-[220px] sm:h-[600px] w-full rounded-lg' />
+        <div className='grid grid-cols-[.5fr_.5fr_1.65fr] lg:grid-cols-[1fr_1fr_1fr_3fr] items-center gap-4 lg:gap-6 w-full'>
+          <div className=' hidden lg:block h-[289px] w-full lg:w-auto  lg:h-[650px] rounded-md'>
+            <img src={womenBestSellerImg1} alt="Best seller product" className='object-cover h-[220px] lg:h-[600px] w-full rounded-lg' />
           </div>
-          <div className='h-[289px] w-full sm:w-auto  sm:h-[650px] rounded-md'>
-            <img src={womenBestSellerImg2} alt="Best seller product" className='object-cover h-[220px] sm:h-[600px]  w-full rounded-lg' />
+          <div className='h-[289px] w-full lg:w-auto  lg:h-[650px] rounded-md'>
+            <img src={womenBestSellerImg2} alt="Best seller product" className='object-cover h-[220px] lg:h-[600px]  w-full rounded-lg' />
           </div>
-          <div className='h-[289px] w-full sm:w-auto sm:h-[650px]'>
-            <img src={womenBestSellerImg3} alt="Best seller product" className='object-cover h-[220px] sm:h-[600px] w-full rounded-lg' />
+          <div className='h-[289px] w-full lg:w-auto lg:h-[650px]'>
+            <img src={womenBestSellerImg3} alt="Best seller product" className='object-cover h-[220px] lg:h-[600px] w-full rounded-lg' />
           </div>
-          <div className='h-[289px] w-full sm:w-auto sm:h-[650px]'>
-            <img src={womenBestSellerImg4} alt="Best seller product" className='h-[220px] sm:h-[600px] object-cover w-full rounded-lg' />
-            <div className='flex flex-col sm:flex-row gap- justify-between py-2'>
+          <div className='h-[289px] w-full lg:w-auto lg:h-[650px]'>
+            <img src={womenBestSellerImg4} alt="Best seller product" className='h-[220px] lg:h-[600px] object-cover w-full rounded-lg' />
+            <div className='flex flex-col lg:flex-row gap- justify-between py-2'>
               <ul className='flex gap-1'>
                 {
                   [1, 2, 3, 4].map((item) => (
@@ -44,8 +44,8 @@ const BestSeller = () => {
           <div>
           </div>
         </div>
-        <div className='flex flex-col py-2 sm:py-6 gap-3'>
-          <p className=' text-[0.75rem] sm:text-[1.15rem] font-plus-jakarta'>Madison Utendahl and Lex Kendall set out to prov e they could throw a NewYork City <br className='hidden sm:block' /> engagement party where every. </p>
+        <div className='flex flex-col py-2 lg:py-6 gap-3'>
+          <p className=' text-[0.75rem] lg:text-[1.15rem] font-plus-jakarta'>Madison Utendahl and Lex Kendall set out to prov e they could throw a NewYork City <br className='hidden lg:block' /> engagement party where every. </p>
           <button className=" flex items-center gap-2 bg-tint-5 text-primary-dark-blue capitalize font-semibold self-end rounded-md">
             <span>view more</span>
             <HiChevronRight className=" text-shade-5" />

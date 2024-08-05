@@ -13,8 +13,8 @@ const MyAccountDesktop = ({ position, closeActiveNavButton }) => {
     closeActiveNavButton();
   }
   return (
-    <div className={`w-full fixed h-screen left-0 top-0 sm:top-[70px] bg-[rgba(0,0,0,0.3)] z-[1000] ${loggedIn ? 'block': 'hidden'}`}>
-      <div className={` fixed sm:hiddn top-[70px] h w-full sm:w-[234px] left-0  overflow-y-auto rounded-md `} style={
+    <div className={`w-full fixed h-screen left-0 top-0 lg:top-[70px] bg-[rgba(0,0,0,0.3)] z-[1000] ${loggedIn ? 'block': 'hidden'}`}>
+      <div className={` fixed lg:hiddn top-[70px] h w-full lg:w-[234px] left-0  overflow-y-auto rounded-md `} style={
       {
         left: `${position as number - 100}px`
       }

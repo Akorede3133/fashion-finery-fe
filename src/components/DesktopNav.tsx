@@ -115,7 +115,7 @@ const DesktopNav = () => {
   ]
 
   return (
-    <section className="hidden sm:flex justify-between items-center relative bg-white py-2 px-12">
+    <section className="hidden lg:flex justify-between items-center relative bg-white py-2 px-12">
       <div className="flex gap-2 items-center">
         <img src={logo} alt="Manelo logo" />
         <h2 className=" font-[400] text-3xl font-bree-serif">Manelo</h2>
