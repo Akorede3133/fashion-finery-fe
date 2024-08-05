@@ -2,9 +2,9 @@ import { HiCheck } from 'react-icons/hi2'
 import DashboardProfileHeader from '../components/DashboardProfileHeader'
 const Dashboard = () => {
   return (
-    <div className=" pb-24 sm:border-l-[1px] sm:pl-20 sm:pb-0">
+    <div className=" pb-24 lg:border-l-[1px] lg:pl-20 lg:pb-0 w-[90%] mx-auto">
       <DashboardProfileHeader />
-      <div className='pt-3 sm:pt-8'>
+      <div className='pt-3 lg:pt-8'>
         <div>
           <p className=' font-bold'>Hello mahnaz (not mahnaz? Log out)</p>
           <p className=' capitalize text-sm pt-3'>manage subscriptions</p>
@@ -35,8 +35,8 @@ const Dashboard = () => {
               <p>15, dangote road off sango</p>
             </li>
           </ul>
-          <div className=' flex justify-end py-8 sm:py-4'>
-            <button className=' border-2 border-primary-black rounded-md py-3 px-20 sm:px-10'>Edit</button>
+          <div className=' flex justify-end py-8 lg:py-4'>
+            <button className=' border-2 border-primary-black rounded-md py-3 px-20 lg:px-10'>Edit</button>
           </div>
         </section>
        

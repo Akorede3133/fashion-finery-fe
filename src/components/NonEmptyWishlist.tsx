@@ -39,7 +39,7 @@ const NonEmptyWishlist = () => {
           items.map((item) => (
             <li className="">
               <div className="relative">
-                <img src={item.image} alt="" className="w-[255px] sm:w-[460px] object-cover" />
+                <img src={item.image} alt="" className="w-[255px] lg:w-[460px] object-cover" />
                 <button className=" absolute top-0 right-0 bg-white m-4 p-[2px] rounded-sm">
                   <FiTrash />
                 </button>

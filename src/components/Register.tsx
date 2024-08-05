@@ -19,8 +19,8 @@ const Register = ({ position, closeActiveNavButton }:{ closeActiveNavButton?: ()
   }
   
   return (
-    <div  className={`w-full fixed h-screen left-0 top-0 sm:top-[70px] bg-[rgba(0,0,0,0.3)] z-[1000] ${showRegisterPage ? 'block': 'hidden'}`}>
-       <div className={` fixed sm:hiddn bg-white top-0 sm:top-[70px] min-h-screen h-full sm:h-[80vh] sm:min-h-[90vh] w-full sm:w-[496px] left-0 ${showRegisterPage ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all sm:transition-none duration-[0.75s] flex flex-col overflow-auto `} style={
+    <div  className={`w-full fixed h-screen left-0 top-0 lg:top-[70px] bg-[rgba(0,0,0,0.3)] z-[1000] ${showRegisterPage ? 'block': 'hidden'}`}>
+       <div className={` fixed lg:hiddn bg-white top-0 lg:top-[70px] min-h-screen h-full lg:h-[80vh] lg:min-h-[90vh] w-full lg:w-[496px] left-0 ${showRegisterPage ? 'translate-x-0' : 'translate-x-[-1000%]'} transition-all lg:transition-none duration-[0.75s] flex flex-col overflow-auto `} style={
       {
         left: `${position as number - 435}px`
       }

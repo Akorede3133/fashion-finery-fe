@@ -53,6 +53,19 @@ body {
 .stepper--item.completed .step--counter {
   background-color: #218012;
 }
+table {
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #ccc;
+}
+
+tr {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+}
+
 
 
 .stepper--item::before {

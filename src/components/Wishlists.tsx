@@ -8,7 +8,7 @@ const Wishlists = () => {
 
   
   return (
-    <div className=" pb-24 sm:border-l-[1px] sm:pl-20 sm:pb-0">
+    <div className=" pb-24 lg:border-l-[1px] lg:pl-20 lg:pb-0">
      { !wishlists ? <EmpyWishlist /> : <NonEmptyWishlist  /> }
      
     </div>

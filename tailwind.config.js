@@ -65,9 +65,10 @@ export default {
             3: '#fec9d4'
           },
           success: {
-            1: '#8DB81F',
-            2: '#7fff6a',
-            3: '#cfffc8'
+            1: '#218012',
+            2: '#8DB81F',
+            3: '#7fff6a',
+            4: '#cfffc8'
           },
           info: {
             1: '#004AB9',
