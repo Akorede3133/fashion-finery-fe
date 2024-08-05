@@ -1,4 +1,4 @@
-import { selectAuth, setShowAccount } from "../redux/feature/auth/authSlice"
+import { selectAuth, setShowAccount } from "../redux/authSlice"
 import { useAppDispatch, useAppSelector } from "../redux/hooks"
 import avatar from '../assets/men/men_menu_picture.png';
 import { HiOutlineHeart, HiOutlineLockClosed, HiOutlineUser, HiOutlineXMark } from "react-icons/hi2";

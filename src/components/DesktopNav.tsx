@@ -9,7 +9,7 @@ import Search from './Search';
 import NavButton from './NavButton';
 import Login from './Login';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { displayLoginPage, hideLoginPage, hideRegisterPage, selectAuth, setShowAccount } from '../redux/feature/auth/authSlice';
+import { displayLoginPage, hideLoginPage, hideRegisterPage, selectAuth, setShowAccount } from '../redux/authSlice';
 import Register from './Register';
 import ConfirmEmail from './ConfirmEmail';
 import MyAccount from './MyAccount';

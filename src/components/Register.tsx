@@ -1,4 +1,4 @@
-import { displayLoginPage, hideRegisterPage, selectAuth } from "../redux/feature/auth/authSlice"
+import { displayLoginPage, hideRegisterPage, selectAuth } from "../redux/authSlice"
 import { useAppDispatch, useAppSelector } from "../redux/hooks"
 import AuthSocialLogos from "./AuthSocialLogos"
 import Input from "./Input"

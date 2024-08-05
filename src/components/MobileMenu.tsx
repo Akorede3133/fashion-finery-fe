@@ -7,7 +7,7 @@ import womenMenuPicture from '../assets/women/women_menu_picture.png';
 import menMenuPicture from '../assets/men/men_menu_picture.png';
 import MenuHead from "./MenuHead"
 import { useAppDispatch } from "../redux/hooks"
-import { displayLoginPage } from "../redux/feature/auth/authSlice"
+import { displayLoginPage } from "../redux/authSlice"
 import { RiDashboardLine } from "react-icons/ri"
 import { Link } from "react-router-dom"
 import MenuOptionsForLoggedInAccount from "./MenuOptionsForLoggedInAccount"

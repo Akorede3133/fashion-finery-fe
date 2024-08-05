@@ -1,5 +1,5 @@
 import logo from '../assets/logo.png';
-import { selectAuth } from '../redux/feature/auth/authSlice';
+import { selectAuth } from '../redux/authSlice';
 import { useAppSelector } from '../redux/hooks';
 const ConfirmEmail = ({ position }) => {
   const { showConfirmEmail } = useAppSelector(selectAuth)

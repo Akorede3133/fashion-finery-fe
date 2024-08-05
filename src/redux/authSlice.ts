@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
+import { RootState } from "./store";
 
 export type AuthState = {
   showLoginPage: boolean;
@@ -41,7 +41,7 @@ const authSlice = createSlice({
     }
   }
 })
-export const authReducer = authSlice.reducer;
+export default authSlice.reducer;
 
 export const { displayLoginPage, hideLoginPage, displayRegisterPage, hideRegisterPage, setShowAccount }  = authSlice.actions;
 export const selectAuth = (state: RootState) => state.auth;
