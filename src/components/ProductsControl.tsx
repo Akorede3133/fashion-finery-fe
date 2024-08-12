@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { BiChevronDown } from "react-icons/bi"
 import { HiOutlineXMark } from "react-icons/hi2"
 import { MdOutlineTune } from "react-icons/md"
+import ProductFilter from "./ProductFilter"
 
 const ProductsControl = () => {
   const sortOptions = [
@@ -15,18 +16,20 @@ const ProductsControl = () => {
     'Date, new to old',
   ]
   const [sortProduct, setSortProduct] = useState(false);
+  const [showFilterProduct, setShowFilterProduct] = useState(true);
+  const hideFilter = () => setShowFilterProduct(false);
   useEffect(() => {
-    if (sortProduct) {
+    if (sortProduct || showFilterProduct) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-  }, [sortProduct])
+  }, [sortProduct, showFilterProduct])
   const selectedOption = 'Price, high to low'
   return (
     <div className="py-4">
       <div className="flex justify-between">
-        <button className=" flex justify-between items-center w-[153px] text-xl uppercase font-serif font-semibold bg-tint-5 p-2 rounded-md">
+        <button className=" flex justify-between items-center w-[153px] text-xl uppercase font-serif font-semibold bg-tint-5 p-2 rounded-md" onClick={() => setShowFilterProduct(true)}>
           <span>filter</span>
           <MdOutlineTune className=" text-2xl" />
         </button>
@@ -49,17 +52,17 @@ const ProductsControl = () => {
               {
                 sortOptions.map((option) => {
                   return (
-                    <li className={` ${option === selectedOption && 'border-l-4 border-tint-1 bg-tint-5 '}text-left`}>
+                    <li key={option} className={` ${option === selectedOption && 'border-l-4 border-tint-1 bg-tint-5 '}text-left`}>
                       <button className=" p-1 px-5 w-full text-left">{option}</button>
                   </li>
                   )
                 })
               }
             </ul>
-          </div>
+          </div>  
         </div>
-       
       </div>
+      <ProductFilter showFilterProduct={showFilterProduct} hideFilter={hideFilter} />
     </div>
   )
 }
