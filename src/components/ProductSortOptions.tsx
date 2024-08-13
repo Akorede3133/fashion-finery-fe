@@ -20,7 +20,7 @@ const ProductSortOptions = () => {
         return (
           <li key={option} className={` ${option === selectedOption && 'border-l-4 border-tint-1 bg-tint-5 '}text-left`}>
             <button className=" p-1 px-5 w-full text-left">{option}</button>
-        </li>
+          </li>
         )
       })
     }

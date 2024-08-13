@@ -35,6 +35,9 @@ body {
 .wish--grid--container > li:last-child:nth-child(odd) {
   justify-self: center;
 }
+.product--list--container > li:nth-child(even) {
+  margin-top: 32.21px;
+}
 
 .stepper--wrapper {
   display: grid;
@@ -53,20 +56,6 @@ body {
 .stepper--item.completed .step--counter {
   background-color: #218012;
 }
-table {
-  border-collapse: collapse;
-}
-th, td {
-  border: 1px solid #ccc;
-}
-
-tr {
-  /* border: 1px solid black; */
-  display: flex;
-  justify-content: space-between;
-}
-
-
 
 .stepper--item::before {
   position: absolute;
@@ -121,7 +110,14 @@ tr {
 }
 
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
+  .product--list--container > li:nth-child(even) {
+    margin-top: unset;
+  }
+  .product--list--container > li:nth-child(3n+2) {
+    margin-top: 32.21px;
+  
+  }
   .wish--grid--container > :nth-child(4n-3),
   .wish--grid--container > :nth-child(4n-2) {
     /* justify-self: end; */

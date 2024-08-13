@@ -100,7 +100,7 @@ const ProductFilterOptions = () => {
   });
   const [selectedColor, setSelectedColor] = useState('brown');
 
-  const togglefilter = (option) => {
+  const togglefilter = (option: string) => {
     if (option === 'price') {
       if (filters.price) {
         setFilters((prev) => ({ ...prev,  price: false}))
@@ -139,7 +139,7 @@ const ProductFilterOptions = () => {
 
   }
   return (
-    <ul className=" w-[90%] mx-auto">
+    <ul className=" w-[90%] mx-auto bg-white">
       <li className="font-semibold">
         <button className="w-full flex justify-between border-b p-3" onClick={() => togglefilter('price')}>
           <p className={filters.price ? ' text-tint-1' : ''}>PRICE</p>
@@ -182,7 +182,7 @@ const ProductFilterOptions = () => {
             {
               sizes.map((size) => {
                 return (
-                  <li className=" flex gap-2 items-center ">
+                  <li className=" flex gap-2 items-center " key={size}>
                     <input type="checkbox"  className=" cursor-pointer w-[20px] h-[20px]" id={size} />
                     <label htmlFor={size} className=" text-neutral-gray-5 font-normal cursor-pointer text-sm">{size}</label>
                   </li>
