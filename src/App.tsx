@@ -6,12 +6,14 @@ import DashBoardLayout from "./components/DashBoardLayout"
 import Wishlist from "./pages/Wishlist"
 import OrderTracking from "./pages/OrderTracking"
 import Products from "./pages/Products"
+import Shopping from "./pages/Shopping"
 
 const App = () => {
   const router = createBrowserRouter(createRoutesFromElements(
     <Route element={<AppLayout />}>
       <Route element={<Home />} path="/"/>
       <Route element={<Products />} path="products"/>
+      <Route element={<Shopping />} path="product/:id"/>
       <Route  element={<DashBoardLayout />}>
         <Route path="dashboard" index element={<Dashboard />} />
         <Route path="wishlist" element={<Wishlist />} />

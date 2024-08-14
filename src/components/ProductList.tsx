@@ -11,6 +11,7 @@ import img9 from '../assets/women/women_coat_2.png';
 import img10 from '../assets/women/women_shop_1.png';
 import img11 from '../assets/women/women_shop_2.png';
 import img12 from '../assets/women/women_shop_3.png';
+import { Link } from 'react-router-dom';
 
 
 
@@ -82,41 +83,35 @@ const products = [
 
 const ProductList = () => {
   return (
-    <div className=" bg-white h-full py-5">
-      <div className=" flex md:hidden justify-between pb-5">
-        <div className=" flex items-center gap-2">
-          <p className=" capitalize text-sm border-r border-neutral-gray-5 pr-2"><span className=" text-srate-error-1">281</span> products found</p>
-          <div className=" flex items-center text-sm">
-            <HiOutlineXMark  />
-            <p className=" capitalize">in stock</p>
-          </div>
-        </div>
-      </div>
+    <div className=" bg-white h-full">
       <ul className=' grid grid-cols-2 md:grid-cols-3 gap-4 product--list--container'>
         {
           products.map((product) => (
             <li>
-              <div className=' relative'>
-                <img src={product.image} alt={product.name} />
-                <button  className=' absolute top-0 right-0 m-4'>
-                  <HiOutlineHeart className=' text-xl' />
-                </button>
-              </div>
-              <div className=' flex flex-col items-center gap-1'>
-                <p className=' text-neutral-gray-12 text-sm'>{product.name}</p>
-                <p className=' text-neutral-gray-12 text-sm'>{`$${product.price}`}</p>
-                <div className=' flex items-center gap-2'>
-                  <button className=' bg-white border border-neutral-600 h-[20px] w-[20px] rounded-full p-[1px] '>
-                    <div className=' bg-neutral-600 h-full w-full rounded-full'></div>
-                  </button>
-                  <button className=' bg-white border-0 border-primary-black h-[18px] w-[18px] rounded-full '>
-                    <div className=' bg-primary-black h-full w-full rounded-full'></div>
-                  </button>
-                  <button className=' bg-white border-0 border-primary-black h-[18px] w-[18px] rounded-full '>
-                    <div className=' bg-neutral-black-5 h-full w-full rounded-full'></div>
+              <Link to='/shopping/2'>
+                <div className=' relative'>
+                  <img src={product.image} alt={product.name} />
+                  <button  className=' absolute top-0 right-0 m-4'>
+                    <HiOutlineHeart className=' text-xl' />
                   </button>
                 </div>
-              </div>
+                <div className=' flex flex-col items-center gap-1'>
+                  <p className=' text-neutral-gray-12 text-sm'>{product.name}</p>
+                  <p className=' text-neutral-gray-12 text-sm'>{`$${product.price}`}</p>
+                  <div className=' flex items-center gap-2'>
+                    <button className=' bg-white border border-neutral-600 h-[20px] w-[20px] rounded-full p-[1px] '>
+                      <div className=' bg-neutral-600 h-full w-full rounded-full'></div>
+                    </button>
+                    <button className=' bg-white border-0 border-primary-black h-[18px] w-[18px] rounded-full '>
+                      <div className=' bg-primary-black h-full w-full rounded-full'></div>
+                    </button>
+                    <button className=' bg-white border-0 border-primary-black h-[18px] w-[18px] rounded-full '>
+                      <div className=' bg-neutral-black-5 h-full w-full rounded-full'></div>
+                    </button>
+                  </div>
+                </div>
+              </Link>
+             
             </li>
           ))
         }

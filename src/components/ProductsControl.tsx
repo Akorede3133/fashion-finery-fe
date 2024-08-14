@@ -70,6 +70,15 @@ const ProductsControl = () => {
           </div> 
         </div>
       </div>
+      <div className=" flex md:hidden justify-between pb-5 py-4">
+        <div className=" flex items-center gap-2">
+          <p className=" capitalize text-sm border-r border-neutral-gray-5 pr-2"><span className=" text-srate-error-1">281</span> products found</p>
+          <div className=" flex items-center text-sm">
+            <HiOutlineXMark  />
+            <p className=" capitalize">in stock</p>
+          </div>
+        </div>
+      </div>
       <div className=" md:grid grid-cols-[1fr,3fr] gap-4 min-h-screen h-full">
         <div className=" hidden z-[1000] md:block bg-white">
           <h4 className=" uppercase font-serif text-2xl font-bold border-y-2 border-primary-black bg-tint-3 px-2 py-1">filter</h4>
