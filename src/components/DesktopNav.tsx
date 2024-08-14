@@ -13,6 +13,7 @@ import { displayLoginPage, hideLoginPage, hideRegisterPage, selectAuth, setShowA
 import Register from './Register';
 import ConfirmEmail from './ConfirmEmail';
 import MyAccountDesktop from './MyAccountDesktop';
+import { Link } from 'react-router-dom';
 
 const DesktopNav = () => {
   const { showLoginPage, showRegisterPage, loggedIn, showAccount } = useAppSelector(selectAuth)
@@ -115,10 +116,10 @@ const DesktopNav = () => {
 
   return (
     <section className="hidden lg:flex justify-between items-center relative bg-white py-2 px-12">
-      <div className="flex gap-2 items-center">
+      <Link to='/' className="flex gap-2 items-center">
         <img src={logo} alt="Manelo logo" />
         <h2 className=" font-[400] text-3xl font-bree-serif">Manelo</h2>
-      </div>
+      </Link>
       <nav>
         <ul className="flex items-center gap-8" ref={navRef}>
           {
@@ -126,6 +127,15 @@ const DesktopNav = () => {
               <HeaderNavLink key={index} text={link.name} index={index} activeLink={activeLink} isNavLinksClicked={isnavLinksClicked} handleClick={(positionY) => handleNavigation(index, positionY)} />
             ))
           }
+          <li>
+            <Link to='/products' className={` text-neutral-gray-12 font-[400] text-sm uppercase font-plus-jakarta `}>product</Link>
+          </li>
+          <li>
+            <Link to='/journal' className={` text-neutral-gray-12 font-[400] text-sm uppercase font-plus-jakarta `}>journal</Link>
+          </li>
+          <li>
+            <Link to='/about' className={` text-neutral-gray-12 font-[400] text-sm uppercase font-plus-jakarta `}>about</Link>
+          </li>
         </ul>
       </nav>
       <div className="flex gap-8 items-center">
