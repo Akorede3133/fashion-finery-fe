@@ -1,17 +1,41 @@
-import { HiOutlineXMark } from "react-icons/hi2"
+import { useEffect, useState } from "react";
+import { BsChevronDoubleRight, BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { HiOutlineHeart, HiOutlineMinus, HiOutlinePlus, HiOutlineXMark } from "react-icons/hi2"
 import img1 from '../assets/women/women_arrivals_1.png';
 import img2 from '../assets/women/women_arrivals_2.png';
 import img3 from '../assets/women/women_arrivals_3.png';
 import img4 from '../assets/women/women_arrivals_4.png';
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import star from '../assets/star.png';
+import shopPay from '../assets/shop_pay.png';
+import pay from '../assets/pay.png';
+import visa from '../assets/visa.png';
+import mastercard from '../assets/mastercard.png';
+import maestro from '../assets/maestro.png';
+import discover from '../assets/discover.png';
+
+
+
+
 
 
 const ShoppingImg = [img1, img2, img3, img4];
+const cards = [pay, visa, mastercard, maestro, discover];
+const reviews = [
+  {
+    reviewer: 'Whitney King',
+    date: new Date(),
+    comment: 'My friend was wearing this GORGEOUS skirt, I asked her where did she get it fromshe said Nocturne! Id never heard of them but bought one myself WOW love it so much the quality is amazing comfortable too - highly recommend!'
+  },
+  {
+    reviewer: 'Whitney King',
+    date: new Date(),
+    comment: 'My friend was wearing this GORGEOUS skirt, I asked her where did she get it fromshe said Nocturne! Id never heard of them but bought one myself WOW love it so much the quality is amazing comfortable too - highly recommend!'
+  },
+]
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const ProductShopping = () => {
   const length = ShoppingImg.length - 1;
   const [count, setCount] = useState(0);
-  console.log(count, -length);
   const slideToRight = () => {
     if (count > - length) {
       setCount((prev) => prev - 1);
@@ -88,8 +112,137 @@ const ProductShopping = () => {
         </ul>
         <section>
           <h3 className=" capitalize text-2xl font-medium">Cut-Out Midi Dress</h3>
+          <div className=" flex justify-between py-4">
+            <p className=" font-medium text-xl">$363.00</p>
+            <ul className=" flex items-center gap-1">
+              {
+                [1, 2, 3, 4, 5].map(() => (
+                  <li>
+                    <img src={star} alt="Star" className="w-[16px] h-[16px]" />
+                  </li>
+                ))
+              }
+            </ul>
+            <p className=" text-neutral-gray-11 capitalize">23 reviews</p>
+          </div>
+          <p className=" text-neutral-gray-11 font-normal">Shipping calculated at checkout.</p>
+          <article className=" pt-8 pb-5">
+            <h4 className=" font-bold uppercase">size: XS</h4>
+            <div className=" flex items-center gap-2 pt-4">
+              <button className=" text-white bg-tint-1 w-[30px] h-[30px] rounded-md uppercase text-sm">XS</button>
+              <button className=" text-neutral-gray-11 bg-neutral-gray-1 w-[30px] h-[30px] rounded-md uppercase text-sm">s</button>
+              <button className=" text-neutral-gray-11 bg-neutral-gray-1 w-[30px] h-[30px] rounded-md uppercase text-sm">m</button>
+              <button className=" text-neutral-gray-11 bg-neutral-gray-1 w-[30px] h-[30px] rounded-md uppercase text-sm">l</button>
+            </div>
+          </article>
+          <article>
+            <h4 className=" font-bold uppercase">colour: black</h4>
+            <div className=" w-[30px] h-[30px] bg-primary-black border-[3px] border-neutral-gray-5 rounded-md my-4" />
+          </article>
+          <div className=" space-y-3">
+            <div className=" flex gap-4">
+              <div className=" flex items-center gap-6 border border-neutral-black-4 rounded-md px-[25px] py-2">
+                <button>
+                  <HiOutlineMinus className=" text-xl text-primary-black" />
+                </button>
+                <p className=" text-sm">1</p>
+                <button>
+                  <HiOutlinePlus  className=" text-xl" />
+                </button>
+              </div>
+              <button className=" border rounded-md border-neutral-black-4 px-[22px]">
+                <HiOutlineHeart className=" text-2xl " />
+              </button>
+            </div>
+            <button className=" uppercase bg-srate-info-2 w-full py-3 rounded-md text-white">add to cart</button>
+            <button className=" uppercase bg-neutral-black-5 w-full py-3 rounded-md text-white flex justify-center items-center gap-2">
+              <p>view more</p>
+              <img src={shopPay} alt="" className=" self-start" />
+            </button>
+          </div>
+          <div className=" space-y-2 text-sm text-neutral-gray-11 font-normal pt-[39px] pb-6  text-justify">
+            <p>A classic for any closet, this knit sweater by Manelo is complimented with a beautiful stripe ruffle detail..</p>
+            <p>Turtleneck sweater with striped ruffle detail on sleeves.</p>
+            <p>80% Acrylic, 20% Polyester</p>
+            <p>Hand Wash Cold; Do Not Bleach; Do Not Tumble Dry; Iron Low; Dry Clean</p>
+            <p>Model Product Size: S Model Size: </p>
+            <p>Height 5'10 / Bust 29.5 in / Waist 23 in / Hips 34 in</p>
+          </div>
           <div>
-            <p>$363.00</p>
+            <ul className=" flex gap-3 justify-center">
+              {
+                cards.map((card) => (
+                  <li>
+                    <img src={card} alt="Payment card" />
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </section>
+        <section className="pt-[45px] pb-6">
+          <div className="flex bg-tint-5 justify-between items-center pl-5">
+            <h4 className=" font-bold">Reviews</h4>
+            <button className=" bg-primary-black w-[48px] h-[48px] rounded-md flex justify-center items-center">
+              <HiOutlinePlus className=" text-white text-xl" />
+            </button>
+          </div>
+          <div>
+            <div className=" px-4 border-2 border-tint-5 py-4">
+              <h4>Customer reviews</h4>
+              <div className=" flex justify-between">
+                <ul className="flex gap-1">
+                  {
+                    [1, 2, 3, 4, 5].map(() => (
+                      <li>
+                        <img src={star} alt="Star" className="w-[16px] h-[16px]" />
+                      </li>
+                    ))
+                  }
+                </ul>
+                <p className=" pr-5">Based on 14 reveiws</p>
+              </div>
+              <div className=" flex justify-end">
+                <button className="pt-2 text-sm">Write a review</button>
+              </div>
+            </div>
+            <div>
+              <ul className="">
+                {
+                  reviews.map((review) => {
+                    return (
+                      <li className=" border-2 border-t-0 border-tint-5 px-4 py-3 flex gap-3 flex-col">
+                        <ul className="flex gap-1">
+                          {
+                            [1, 2, 3, 4, 5].map(() => (
+                              <li>
+                                <img src={star} alt="Star" className="w-[16px] h-[16px]" />
+                              </li>
+                            ))
+                          }
+                        </ul>
+                        <p className=" text-neutral-black-3">{review.reviewer} on {` ${months[review.date.getMonth()]} ${review.date.getDate()}, ${review.date.getFullYear()}`}</p>
+                        <p className=" text-sm  text-neutral-gray-12 font-normal">{review.comment}</p>
+                        <button className=" text-sm  text-neutral-gray-12 self-end">Report as inappropriate</button>
+                      </li>
+                    )
+                  })
+                }
+              </ul>
+              <div className=" border-2 border-tint-5 border-t-0  flex justify-end gap-20 pt-2 pb-[52px] pr-5">
+                <div className=" space-x-4">
+                  {
+                    [1, 2, 3].map((num) => (
+                      <button className=" text-neutral-gray-12">{num}</button>
+                    ))
+                  }
+                </div>
+                <button className=" capitalize text-neutral-gray-12 flex items-center gap-1">
+                  <span>next</span>
+                  <BsChevronDoubleRight />
+                </button>
+              </div>
+            </div>
           </div>
         </section>
       </div>
