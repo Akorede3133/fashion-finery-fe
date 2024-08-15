@@ -108,6 +108,9 @@ body {
 .step--label {
   margin-top: 10px;
 }
+.shopping--image--slide--btn:focus  svg {
+  color: #fff;
+}
 
 
 @media (min-width: 1024px) {

@@ -88,7 +88,7 @@ const ProductList = () => {
         {
           products.map((product) => (
             <li>
-              <Link to='/shopping/2'>
+              <Link to='/product/2'>
                 <div className=' relative'>
                   <img src={product.image} alt={product.name} />
                   <button  className=' absolute top-0 right-0 m-4'>
