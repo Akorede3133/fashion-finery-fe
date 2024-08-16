@@ -14,11 +14,8 @@ import maestro from '../assets/maestro.png';
 import discover from '../assets/discover.png';
 
 
-
-
-
-
 const ShoppingImg = [img1, img2, img3, img4];
+const alsoLike = [[img1, img2], [img3, img4]];
 const cards = [pay, visa, mastercard, maestro, discover];
 const reviews = [
   {
@@ -34,11 +31,21 @@ const reviews = [
 ]
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const ProductShopping = () => {
-  const length = ShoppingImg.length - 1;
   const [count, setCount] = useState(0);
+  const [SuggestionCount, setSuggestionCount] = useState(0);
+
+  const [displayProductDescOrInfo, setDisplayProductDescOrInfo] = useState<'desc' | 'info'>('desc');
+  
+  const length = ShoppingImg.length - 1;
+  const suggestionLength = alsoLike.length - 1;
   const slideToRight = () => {
-    if (count > - length) {
+    if (count > -length) {
       setCount((prev) => prev - 1);
+    }
+  }
+  const slideSuggestionToRight = () => {
+    if (SuggestionCount > -suggestionLength ) {
+      setSuggestionCount((prev) => prev - 1);
     }
   }
   const slideToLeft = () => {
@@ -46,11 +53,15 @@ const ProductShopping = () => {
       setCount((prev) => prev + 1);
     }
   }
+  const slideSuggestionToLeft = () => {
+    if (SuggestionCount < 0) {
+      setSuggestionCount((prev) => prev + 1);
+    }
+  }
   useEffect(() => {
     const runCarosel = () => {
       if (count === -length) {
         setCount(0);
-        console.log('equal!!!');
         
       }
       if (count > -length) {
@@ -243,6 +254,74 @@ const ProductShopping = () => {
                 </button>
               </div>
             </div>
+          </div>
+        </section>
+        <div>
+          <div className=" flex justify-between">
+            <button className={ ` capitalize font-bold text-neutral-gray-11  ${displayProductDescOrInfo === 'desc' && 'border-b-2 border-srate-info-1 text-srate-info-1'}  py-1 pr-5`} onClick={() => setDisplayProductDescOrInfo('desc')}>description</button>
+            <button className={ ` capitalize font-bold text-neutral-gray-11 ${displayProductDescOrInfo === 'info' && 'border-b-2 border-srate-info-1 text-srate-info-1'}`} onClick={() => setDisplayProductDescOrInfo('info')}>additional info</button>
+          </div>
+          {displayProductDescOrInfo === 'desc' && <div className=" pt-6">
+            <p>At Vero Eos Accusamus Et Iusto Odio Dignissimos Ducimus Qui Blanditilis Praesentium Voluptatum Deleniti Atque Corrupti Quos Dolores Et Quse Molestias E xcepturi Sint Non Providen.</p>
+            <div>
+              <h5 className=" text-xl font-bold pt-6 pb-3">Information</h5>
+              <ul className="mx-4">
+                <li className=" list-disc capitalize font-medium">Fabric: Denim</li>
+                <li className=" list-disc capitalize font-medium">Fit Type: Loose fit</li>
+                <li className=" list-disc capitalize font-medium">Feature: Adjustable straps</li>
+                <li className=" list-disc capitalize font-medium">Front and back pockets</li>
+              </ul>
+            </div>
+            
+          </div>}
+          {displayProductDescOrInfo === 'info' &&<div>
+            Addiditional info
+          </div>}
+        </div>
+        <section className=" mt-[124px] bg-neutral-gray-1 px-5">
+          <h4>You may also like</h4>
+          <ul className=" relative  overflow-hidden h-[320px]">
+            {
+              alsoLike.map((images, index) => {      
+                const translate = `translateX(${(index + SuggestionCount) * 100}%)`;           
+                return (
+                  <li key={index} className="grid grid-cols-2 gap-4 py-3 absolute" style={{
+                    transform: translate,
+                    transition: 'all',
+                    transitionDuration: '0.75s'
+                  }} >
+                   {
+                    images.map((img) => (
+                      <div className="" >
+                        <div className=" relative">
+                          <img src={img} className={` rounded-md `} alt='product image' />
+                          <button className=" absolute top-0 right-0 p-3">
+                            <HiOutlineHeart className=" text-xl" />
+                          </button>
+                        </div>
+                        <div className=" flex justify-center flex-col items-center gap-1 pt-1">
+                          <p className=" font-bold capitalize">cut-out mini dress</p>
+                          <p className=" space-x-4 text-sm">
+                            <span className=" text-srate-error-1 line-through">$365.00</span>
+                            <span>$264.00</span>
+                          </p>
+                        </div>
+                      </div>
+                    ))
+                   }
+                    
+                  </li>
+                )
+              })
+            }
+          </ul>
+          <div className=" flex justify-between pt-4">
+            <button className=" border border-neutral-black-4 p-2 shopping--also--like--image--slide--btn focus:border-srate-info-1 " onClick={slideSuggestionToLeft}>
+              <BsChevronLeft />
+            </button>
+            <button className=" border border-neutral-black-4 p-2 shopping--also--like--image--slide--btn focus:border-srate-info-1 " onClick={slideSuggestionToRight}>
+              <BsChevronRight />
+            </button>
           </div>
         </section>
       </div>

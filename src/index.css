@@ -111,6 +111,10 @@ body {
 .shopping--image--slide--btn:focus  svg {
   color: #fff;
 }
+.shopping--also--like--image--slide--btn:focus svg {
+  color: #004AB9;
+
+}
 
 
 @media (min-width: 1024px) {
