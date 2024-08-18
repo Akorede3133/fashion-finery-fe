@@ -74,8 +74,8 @@ const ProductShopping = () => {
     }
   }, [length, count])
   return (
-    <div className=" min-h-screen w-[90%] mx-auto pb-32">
-      <div className=" flex justify-between pb-5 py-4">
+    <div className=" min-h-screen pb-32">
+      <div className=" flex w-[90%] mx-auto justify-between pb-5 py-4">
         <div className=" flex items-center gap-2">
           <p className=" capitalize text-sm border-r border-neutral-gray-5 pr-2"><span className=" text-srate-error-1">281</span> products found</p>
           <div className=" flex items-center text-sm">
@@ -85,43 +85,45 @@ const ProductShopping = () => {
         </div>
       </div>
       <div>
-        <div className=" relative">
-          <button className={`border border-primary-black p-2 rounded-md absolute top-[50%] z-30 mx-4 focus:bg-srate-info-1 focus:border-none shopping--image--slide--btn ${count === 0 && 'opacity-40'}`} onClick={slideToLeft} disabled={count === 0}>
-            <BsChevronLeft />
-          </button>
-          <ul className=" relative overflow-hidden grid grid-cols-1 h-[600px] w-full">
-            {
-              ShoppingImg.map((img, index) => {
-                const translate = `translateX(${(index + count) * 100}%)`;
-                return (
-                  <li className=" w-full h-full object-cover absolute" key={index} style={{
-                    transform: translate,
-                    transition: 'all',
-                    transitionDuration: '0.75s'
+        <div className=" w-[90%] mx-auto ">
+          <div className=" relative">
+            <button className={`border border-primary-black p-2 rounded-md absolute top-[50%] z-30 mx-4 focus:bg-srate-info-1 focus:border-none shopping--image--slide--btn ${count === 0 && 'opacity-40'}`} onClick={slideToLeft} disabled={count === 0}>
+              <BsChevronLeft />
+            </button>
+            <ul className=" relative overflow-hidden grid grid-cols-1 h-[600px] w-full">
+              {
+                ShoppingImg.map((img, index) => {
+                  const translate = `translateX(${(index + count) * 100}%)`;
+                  return (
+                    <li className=" w-full h-full object-cover absolute" key={index} style={{
+                      transform: translate,
+                      transition: 'all',
+                      transitionDuration: '0.75s'
 
-                  }}>
-                    <img src={img} alt=""  className=" aspect-video w-full object-cover h-full" />
+                    }}>
+                      <img src={img} alt=""  className=" aspect-video w-full object-cover h-full" />
+                    </li>
+                  )
+                })
+              }
+            </ul>
+            <button className={`border border-primary-black p-2 rounded-md absolute right-0 top-[50%] z-30 mx-4 focus:bg-srate-info-1 focus:border-none shopping--image--slide--btn ${count === -length && 'opacity-40'} `} onClick={slideToRight} disabled={count === -length}>
+              <BsChevronRight />
+            </button>
+          </div>
+          <ul className="grid grid-cols-4 py-3 gap-4">
+            {
+              ShoppingImg.map((img, index) => {    
+                return (
+                  <li key={index} >
+                    <img src={img} className={`${-index === count ? 'opacity-100 border-l-4 border-tint-1' : 'opacity-20'}`} alt='product image' />
                   </li>
                 )
               })
             }
           </ul>
-          <button className={`border border-primary-black p-2 rounded-md absolute right-0 top-[50%] z-30 mx-4 focus:bg-srate-info-1 focus:border-none shopping--image--slide--btn ${count === -length && 'opacity-40'} `} onClick={slideToRight} disabled={count === -length}>
-            <BsChevronRight />
-          </button>
         </div>
-        <ul className="grid grid-cols-4 py-3 gap-4">
-          {
-            ShoppingImg.map((img, index) => {    
-              return (
-                <li key={index} >
-                  <img src={img} className={`${-index === count ? 'opacity-100 border-l-4 border-tint-1' : 'opacity-20'}`} alt='product image' />
-                </li>
-              )
-            })
-          }
-        </ul>
-        <section>
+        <section className=" w-[90%] mx-auto">
           <h3 className=" capitalize text-2xl font-medium">Cut-Out Midi Dress</h3>
           <div className=" flex justify-between py-4">
             <p className=" font-medium text-xl">$363.00</p>
@@ -191,7 +193,7 @@ const ProductShopping = () => {
             </ul>
           </div>
         </section>
-        <section className="pt-[45px] pb-6">
+        <section className="pt-[45px] w-[90%] mx-auto pb-6">
           <div className="flex bg-tint-5 justify-between items-center pl-5">
             <h4 className=" font-bold">Reviews</h4>
             <button className=" bg-primary-black w-[48px] h-[48px] rounded-md flex justify-center items-center">
@@ -256,7 +258,7 @@ const ProductShopping = () => {
             </div>
           </div>
         </section>
-        <div>
+        <div className="w-[90%] mx-auto">
           <div className=" flex justify-between">
             <button className={ ` capitalize font-bold text-neutral-gray-11  ${displayProductDescOrInfo === 'desc' && 'border-b-2 border-srate-info-1 text-srate-info-1'}  py-1 pr-5`} onClick={() => setDisplayProductDescOrInfo('desc')}>description</button>
             <button className={ ` capitalize font-bold text-neutral-gray-11 ${displayProductDescOrInfo === 'info' && 'border-b-2 border-srate-info-1 text-srate-info-1'}`} onClick={() => setDisplayProductDescOrInfo('info')}>additional info</button>
@@ -278,9 +280,9 @@ const ProductShopping = () => {
             Addiditional info
           </div>}
         </div>
-        <section className=" mt-[124px] bg-neutral-gray-1 px-5">
-          <h4>You may also like</h4>
-          <ul className=" relative  overflow-hidden h-[320px]">
+        <section className=" mt-[124px] bg-tint-5 px-5">
+          <h4 className=" text-2xl capitalize font-bold font-serif pt-[45px] pb-5 text-center">You may also like</h4>
+          <ul className=" relative  overflow-hidden h-[400px]">
             {
               alsoLike.map((images, index) => {      
                 const translate = `translateX(${(index + SuggestionCount) * 100}%)`;           
