@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsChevronDoubleRight, BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { HiOutlineHeart, HiOutlineMinus, HiOutlinePlus, HiOutlineXMark } from "react-icons/hi2"
 import img1 from '../assets/women/women_arrivals_1.png';
@@ -12,6 +12,7 @@ import visa from '../assets/visa.png';
 import mastercard from '../assets/mastercard.png';
 import maestro from '../assets/maestro.png';
 import discover from '../assets/discover.png';
+import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 
 
 const ShoppingImg = [img1, img2, img3, img4];
@@ -31,8 +32,10 @@ const reviews = [
 ]
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const ProductShopping = () => {
+  const slideRef = useRef<HTMLUListElement>(null);
   const [count, setCount] = useState(0);
   const [SuggestionCount, setSuggestionCount] = useState(0);
+  const translate = `translateX(${ SuggestionCount * 105}%)`;
 
   const [displayProductDescOrInfo, setDisplayProductDescOrInfo] = useState<'desc' | 'info'>('desc');
   
@@ -58,21 +61,21 @@ const ProductShopping = () => {
       setSuggestionCount((prev) => prev + 1);
     }
   }
-  useEffect(() => {
-    const runCarosel = () => {
-      if (count === -length) {
-        setCount(0);
+  // useEffect(() => {
+  //   const runCarosel = () => {
+  //     if (count === -length) {
+  //       setCount(0);
         
-      }
-      if (count > -length) {
-        setCount((prev) => prev - 1);
-      }
-    }
-    const interval = setInterval(runCarosel, 1500)
-    return () => {
-      clearInterval(interval);
-    }
-  }, [length, count])
+  //     }
+  //     if (count > -length) {
+  //       setCount((prev) => prev - 1);
+  //     }
+  //   }
+  //   const interval = setInterval(runCarosel, 1500)
+  //   return () => {
+  //     clearInterval(interval);
+  //   }
+  // }, [length, count])
   return (
     <div className=" min-h-screen pb-32">
       <div className=" flex w-[90%] mx-auto justify-between pb-5 py-4">
@@ -85,12 +88,12 @@ const ProductShopping = () => {
         </div>
       </div>
       <div>
-        <div className=" w-[90%] mx-auto ">
-          <div className=" relative">
-            <button className={`border border-primary-black p-2 rounded-md absolute top-[50%] z-30 mx-4 focus:bg-srate-info-1 focus:border-none shopping--image--slide--btn ${count === 0 && 'opacity-40'}`} onClick={slideToLeft} disabled={count === 0}>
+        <div className=" w-[90%] mx-auto md:grid grid-cols-[184px_1fr_1fr] gap-4 ">
+          <div className=" relative order-2">
+            <button className={` md:hidden border border-primary-black p-2 rounded-md absolute top-[50%] z-30 mx-4 focus:bg-srate-info-1 focus:border-none shopping--image--slide--btn ${count === 0 && 'opacity-40'}`} onClick={slideToLeft} disabled={count === 0}>
               <BsChevronLeft />
             </button>
-            <ul className=" relative overflow-hidden grid grid-cols-1 h-[600px] w-full">
+            <ul className=" relative overflow-hidden grid grid-cols-1 w-full h-[444px] md:h-[78vh]">
               {
                 ShoppingImg.map((img, index) => {
                   const translate = `translateX(${(index + count) * 100}%)`;
@@ -107,92 +110,107 @@ const ProductShopping = () => {
                 })
               }
             </ul>
-            <button className={`border border-primary-black p-2 rounded-md absolute right-0 top-[50%] z-30 mx-4 focus:bg-srate-info-1 focus:border-none shopping--image--slide--btn ${count === -length && 'opacity-40'} `} onClick={slideToRight} disabled={count === -length}>
+            <button className={`md:hidden border border-primary-black p-2 rounded-md absolute right-0 top-[50%] z-30 mx-4 focus:bg-srate-info-1 focus:border-none shopping--image--slide--btn ${count === -length && 'opacity-40'} `} onClick={slideToRight} disabled={count === -length}>
               <BsChevronRight />
             </button>
           </div>
-          <ul className="grid grid-cols-4 py-3 gap-4">
-            {
-              ShoppingImg.map((img, index) => {    
-                return (
-                  <li key={index} >
-                    <img src={img} className={`${-index === count ? 'opacity-100 border-l-4 border-tint-1' : 'opacity-20'}`} alt='product image' />
-                  </li>
-                )
-              })
-            }
-          </ul>
-        </div>
-        <section className=" w-[90%] mx-auto">
-          <h3 className=" capitalize text-2xl font-medium">Cut-Out Midi Dress</h3>
-          <div className=" flex justify-between py-4">
-            <p className=" font-medium text-xl">$363.00</p>
-            <ul className=" flex items-center gap-1">
+          <div className="order-1 md:h-[78vh] md:overflow-hidde py-3 relative md:py-0">
+            <ul className="grid grid-cols-4 md:grid-cols-1 gap-[15px] md:h-[92%] overflow-auto">
               {
-                [1, 2, 3, 4, 5].map(() => (
-                  <li>
-                    <img src={star} alt="Star" className="w-[16px] h-[16px]" />
-                  </li>
-                ))
+                ShoppingImg.map((img, index) => {    
+                  return (
+                    <li key={index} >
+                      <img src={img} className={` md:h-[23vh] object-cove md:w-full ${-index === count ? 'opacity-100 border-l-4 border-tint-1' : 'opacity-20'}`} alt='product image' />
+                    </li>
+                  )
+                })
               }
             </ul>
-            <p className=" text-neutral-gray-11 capitalize">23 reviews</p>
-          </div>
-          <p className=" text-neutral-gray-11 font-normal">Shipping calculated at checkout.</p>
-          <article className=" pt-8 pb-5">
-            <h4 className=" font-bold uppercase">size: XS</h4>
-            <div className=" flex items-center gap-2 pt-4">
-              <button className=" text-white bg-tint-1 w-[30px] h-[30px] rounded-md uppercase text-sm">XS</button>
-              <button className=" text-neutral-gray-11 bg-neutral-gray-1 w-[30px] h-[30px] rounded-md uppercase text-sm">s</button>
-              <button className=" text-neutral-gray-11 bg-neutral-gray-1 w-[30px] h-[30px] rounded-md uppercase text-sm">m</button>
-              <button className=" text-neutral-gray-11 bg-neutral-gray-1 w-[30px] h-[30px] rounded-md uppercase text-sm">l</button>
-            </div>
-          </article>
-          <article>
-            <h4 className=" font-bold uppercase">colour: black</h4>
-            <div className=" w-[30px] h-[30px] bg-primary-black border-[3px] border-neutral-gray-5 rounded-md my-4" />
-          </article>
-          <div className=" space-y-3">
-            <div className=" flex gap-4">
-              <div className=" flex items-center gap-6 border border-neutral-black-4 rounded-md px-[25px] py-2">
-                <button>
-                  <HiOutlineMinus className=" text-xl text-primary-black" />
-                </button>
-                <p className=" text-sm">1</p>
-                <button>
-                  <HiOutlinePlus  className=" text-xl" />
-                </button>
-              </div>
-              <button className=" border rounded-md border-neutral-black-4 px-[22px]">
-                <HiOutlineHeart className=" text-2xl " />
+            <div className="hidden md:flex  justify-between absolute bottom-0 w-full">
+              <button  className=" border border-primary-black w-[76px] flex justify-center py-1" onClick={slideToRight}>
+                <BiChevronDown />
+              </button>
+              <button className=" border border-primary-black w-[76px] flex justify-center py-1"onClick={slideToLeft}>
+                <BiChevronUp />
               </button>
             </div>
-            <button className=" uppercase bg-srate-info-2 w-full py-3 rounded-md text-white">add to cart</button>
-            <button className=" uppercase bg-neutral-black-5 w-full py-3 rounded-md text-white flex justify-center items-center gap-2">
-              <p>view more</p>
-              <img src={shopPay} alt="" className=" self-start" />
-            </button>
           </div>
-          <div className=" space-y-2 text-sm text-neutral-gray-11 font-normal pt-[39px] pb-6  text-justify">
-            <p>A classic for any closet, this knit sweater by Manelo is complimented with a beautiful stripe ruffle detail..</p>
-            <p>Turtleneck sweater with striped ruffle detail on sleeves.</p>
-            <p>80% Acrylic, 20% Polyester</p>
-            <p>Hand Wash Cold; Do Not Bleach; Do Not Tumble Dry; Iron Low; Dry Clean</p>
-            <p>Model Product Size: S Model Size: </p>
-            <p>Height 5'10 / Bust 29.5 in / Waist 23 in / Hips 34 in</p>
-          </div>
-          <div>
-            <ul className=" flex gap-3 justify-center">
-              {
-                cards.map((card) => (
-                  <li>
-                    <img src={card} alt="Payment card" />
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </section>
+          <section className=" order-3 md:h-[78vh] md:pr-5 md:overflow-y-auto">
+            <h3 className=" capitalize text-2xl font-medium">Cut-Out Midi Dress</h3>
+            <div className=" flex justify-between py-4">
+              <p className=" font-medium text-xl">$363.00</p>
+              <ul className=" flex items-center gap-1">
+                {
+                  [1, 2, 3, 4, 5].map(() => (
+                    <li>
+                      <img src={star} alt="Star" className="w-[16px] h-[16px]" />
+                    </li>
+                  ))
+                }
+              </ul>
+              <p className=" text-neutral-gray-11 capitalize">23 reviews</p>
+            </div>
+            <p className=" text-neutral-gray-11 font-normal">Shipping calculated at checkout.</p>
+            <article className=" pt-8 pb-5">
+              <h4 className=" font-bold uppercase">size: XS</h4>
+              <div className=" flex items-center gap-2 pt-4">
+                <button className=" text-white bg-tint-1 w-[30px] h-[30px] rounded-md uppercase text-sm">XS</button>
+                <button className=" text-neutral-gray-11 bg-neutral-gray-1 w-[30px] h-[30px] rounded-md uppercase text-sm">s</button>
+                <button className=" text-neutral-gray-11 bg-neutral-gray-1 w-[30px] h-[30px] rounded-md uppercase text-sm">m</button>
+                <button className=" text-neutral-gray-11 bg-neutral-gray-1 w-[30px] h-[30px] rounded-md uppercase text-sm">l</button>
+              </div>
+            </article>
+            <article>
+              <h4 className=" font-bold uppercase">colour: black</h4>
+              <div className=" w-[30px] h-[30px] bg-primary-black border-[3px] border-neutral-gray-5 rounded-md my-4" />
+            </article>
+            <div className=" space-y-3">
+              <div className=" flex gap-4">
+                <div className=" flex items-center gap-6 border border-neutral-black-4 rounded-md px-[25px] py-2">
+                  <button>
+                    <HiOutlineMinus className=" text-xl text-primary-black" />
+                  </button>
+                  <p className=" text-sm">1</p>
+                  <button>
+                    <HiOutlinePlus  className=" text-xl" />
+                  </button>
+                </div>
+                <button className=" md:hidden border rounded-md border-neutral-black-4 px-[22px]">
+                  <HiOutlineHeart className=" text-2xl " />
+                </button>
+              </div>
+              <button className=" uppercase bg-srate-info-2 w-full py-3 rounded-md text-white">add to cart</button>
+              <div className=" md:flex gap-4">
+                <button className=" uppercase bg-neutral-black-5 w-full py-3 rounded-md text-white flex justify-center items-center gap-2">
+                  <p>view more</p>
+                  <img src={shopPay} alt="" className=" self-start" />
+                </button>
+                <button className=" hidden md:block border rounded-md border-neutral-black-4 px-[30px]">
+                    <HiOutlineHeart className=" text-2xl " />
+                </button>
+              </div>
+            </div>
+            <div className=" space-y-2 text-sm text-neutral-gray-11 font-normal pt-[39px] pb-6 text-justify">
+              <p>A classic for any closet, this knit sweater by Manelo is complimented with a beautiful stripe ruffle detail..</p>
+              <p>Turtleneck sweater with striped ruffle detail on sleeves.</p>
+              <p>80% Acrylic, 20% Polyester</p>
+              <p>Hand Wash Cold; Do Not Bleach; Do Not Tumble Dry; Iron Low; Dry Clean</p>
+              <p>Model Product Size: S Model Size: </p>
+              <p>Height 5'10 / Bust 29.5 in / Waist 23 in / Hips 34 in</p>
+            </div>
+            <div>
+              <ul className=" flex gap-3 justify-center">
+                {
+                  cards.map((card) => (
+                    <li>
+                      <img src={card} alt="Payment card" />
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </section>
+        </div>
         <section className="pt-[45px] w-[90%] mx-auto pb-6">
           <div className="flex bg-tint-5 justify-between items-center pl-5">
             <h4 className=" font-bold">Reviews</h4>
@@ -259,7 +277,7 @@ const ProductShopping = () => {
           </div>
         </section>
         <div className="w-[90%] mx-auto">
-          <div className=" flex justify-between">
+          <div className=" flex justify-between md:justify-start gap-4 md:border-b">
             <button className={ ` capitalize font-bold text-neutral-gray-11  ${displayProductDescOrInfo === 'desc' && 'border-b-2 border-srate-info-1 text-srate-info-1'}  py-1 pr-5`} onClick={() => setDisplayProductDescOrInfo('desc')}>description</button>
             <button className={ ` capitalize font-bold text-neutral-gray-11 ${displayProductDescOrInfo === 'info' && 'border-b-2 border-srate-info-1 text-srate-info-1'}`} onClick={() => setDisplayProductDescOrInfo('info')}>additional info</button>
           </div>
@@ -280,23 +298,23 @@ const ProductShopping = () => {
             Addiditional info
           </div>}
         </div>
-        <section className=" mt-[124px] bg-tint-5 px-5">
+        <section className=" mt-[124px] bg-tint-5 px-5 overflow-hidden grid">
           <h4 className=" text-2xl capitalize font-bold font-serif pt-[45px] pb-5 text-center">You may also like</h4>
-          <ul className=" relative  overflow-hidden h-[400px]">
+          <ul className=" relative  overflow-hidden h-[415px] my- md:h-[470px] md:order-3 md:w-[90%] md:mx-auto">
             {
               alsoLike.map((images, index) => {      
-                const translate = `translateX(${(index + SuggestionCount) * 100}%)`;           
+                const translate = `translateX(${(index + SuggestionCount) * 103.5}%)`;           
                 return (
-                  <li key={index} className="grid grid-cols-2 gap-4 py-3 absolute" style={{
+                  <li key={index} className={`grid grid-cols-2 gap-4 py-3 absolute md:w-[49%]`} style={{
                     transform: translate,
                     transition: 'all',
                     transitionDuration: '0.75s'
                   }} >
                    {
                     images.map((img) => (
-                      <div className="" >
-                        <div className=" relative">
-                          <img src={img} className={` rounded-md `} alt='product image' />
+                      <div className=" md:bg-white">
+                        <div className={`relative `}>
+                          <img src={img} className={` rounded-md md:rounded-none w-full`} alt='product image' />
                           <button className=" absolute top-0 right-0 p-3">
                             <HiOutlineHeart className=" text-xl" />
                           </button>
@@ -317,7 +335,7 @@ const ProductShopping = () => {
               })
             }
           </ul>
-          <div className=" flex justify-between pt-4">
+          <div className=" md:order-2 flex justify-between md:w-[90%] md:mx-auto">
             <button className=" border border-neutral-black-4 p-2 shopping--also--like--image--slide--btn focus:border-srate-info-1 " onClick={slideSuggestionToLeft}>
               <BsChevronLeft />
             </button>

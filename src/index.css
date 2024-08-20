@@ -117,6 +117,7 @@ body {
 }
 
 
+
 @media (min-width: 1024px) {
   .product--list--container > li:nth-child(even) {
     margin-top: unset;
